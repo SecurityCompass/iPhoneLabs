@@ -52,8 +52,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView deselectRowAtIndexPath: indexPath animated: NO];
-
 	UIViewController* vc = nil;
 	
 	switch (indexPath.row) {
@@ -71,7 +69,6 @@
 	if (vc != nil) {
 		[self.navigationController pushViewController: vc animated: YES];
 	}
-
 }
 
 @end
