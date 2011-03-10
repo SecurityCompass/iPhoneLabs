@@ -16,8 +16,9 @@
 		F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8118201132874A500422DF8 /* SelectAccountViewController.m */; };
 		F836F29113269DD100067773 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F28F13269DD100067773 /* MenuViewController.m */; };
 		F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F2A413269F5B00067773 /* StatementsViewController.m */; };
-		F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F2A513269F5B00067773 /* StatementsViewController.xib */; };
 		F85DB1C613293D92001FF0A2 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DB1C513293D92001FF0A2 /* Networking.m */; };
+		F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F863A585132970030040E7AC /* StatementDetailViewController.m */; };
+		F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F863A586132970030040E7AC /* StatementDetailViewController.xib */; };
 		F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */; };
 		F89CC0F41327E9FE00E89173 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */; };
 		F89CC0F51327E9FE00E89173 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */; };
@@ -67,9 +68,11 @@
 		F836F28F13269DD100067773 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		F836F2A313269F5B00067773 /* StatementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsViewController.h; sourceTree = "<group>"; };
 		F836F2A413269F5B00067773 /* StatementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsViewController.m; sourceTree = "<group>"; };
-		F836F2A513269F5B00067773 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
 		F85DB1C413293D92001FF0A2 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		F85DB1C513293D92001FF0A2 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
+		F863A584132970030040E7AC /* StatementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementDetailViewController.h; sourceTree = "<group>"; };
+		F863A585132970030040E7AC /* StatementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementDetailViewController.m; sourceTree = "<group>"; };
+		F863A586132970030040E7AC /* StatementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatementDetailViewController.xib; sourceTree = "<group>"; };
 		F89CC0DF1327E9FE00E89173 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.h"; sourceTree = "<group>"; };
 		F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
 		F89CC0E11327E9FE00E89173 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASICacheDelegate.h"; sourceTree = "<group>"; };
@@ -169,7 +172,9 @@
 				F836F28F13269DD100067773 /* MenuViewController.m */,
 				F836F2A313269F5B00067773 /* StatementsViewController.h */,
 				F836F2A413269F5B00067773 /* StatementsViewController.m */,
-				F836F2A513269F5B00067773 /* StatementsViewController.xib */,
+				F863A584132970030040E7AC /* StatementDetailViewController.h */,
+				F863A585132970030040E7AC /* StatementDetailViewController.m */,
+				F863A586132970030040E7AC /* StatementDetailViewController.xib */,
 				F89CC2A41328295700E89173 /* SetupPasswordViewController.h */,
 				F89CC2A51328295700E89173 /* SetupPasswordViewController.m */,
 				F89CC2A61328295700E89173 /* SetupPasswordViewController.xib */,
@@ -329,10 +334,10 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				F8EAD4E91326772600657690 /* LoginViewController.xib in Resources */,
-				F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */,
 				F89CC1C8132807FE00E89173 /* Errors.plist in Resources */,
 				F89CC2A81328295700E89173 /* SetupPasswordViewController.xib in Resources */,
 				F89CC2B613282CC500E89173 /* CheckPasswordViewController.xib in Resources */,
+				F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +376,7 @@
 				F89CC3EE13284F6700E89173 /* TransferFundsViewController.m in Sources */,
 				F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */,
 				F85DB1C613293D92001FF0A2 /* Networking.m in Sources */,
+				F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
