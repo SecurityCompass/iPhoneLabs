@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* BankAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BankAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8118201132874A500422DF8 /* SelectAccountViewController.m */; };
+		F836F29113269DD100067773 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F28F13269DD100067773 /* MenuViewController.m */; };
+		F836F29213269DD100067773 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F29013269DD100067773 /* MenuViewController.xib */; };
+		F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F2A413269F5B00067773 /* StatementsViewController.m */; };
+		F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F2A513269F5B00067773 /* StatementsViewController.xib */; };
+		F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */; };
+		F89CC0F41327E9FE00E89173 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */; };
+		F89CC0F51327E9FE00E89173 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */; };
+		F89CC0F61327E9FE00E89173 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E71327E9FE00E89173 /* ASIDownloadCache.m */; };
+		F89CC0F71327E9FE00E89173 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E91327E9FE00E89173 /* ASIFormDataRequest.m */; };
+		F89CC0F81327E9FE00E89173 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0EB1327E9FE00E89173 /* ASIHTTPRequest.m */; };
+		F89CC0F91327E9FE00E89173 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0EF1327E9FE00E89173 /* ASIInputStream.m */; };
+		F89CC0FA1327E9FE00E89173 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0F11327E9FE00E89173 /* ASINetworkQueue.m */; };
+		F89CC0FD1327EA1400E89173 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0FC1327EA1400E89173 /* Reachability.m */; };
+		F89CC0FF1327EA2800E89173 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89CC0FE1327EA2800E89173 /* CFNetwork.framework */; };
+		F89CC1031327EA2C00E89173 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89CC1021327EA2C00E89173 /* MobileCoreServices.framework */; };
+		F89CC1071327EA3100E89173 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89CC1061327EA3100E89173 /* SystemConfiguration.framework */; };
+		F89CC10B1327EA3800E89173 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F89CC10A1327EA3800E89173 /* libz.dylib */; };
+		F89CC1111327F0AE00E89173 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC1101327F0AE00E89173 /* SessionManager.m */; };
+		F89CC1611327F58300E89173 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC1581327F58300E89173 /* NSObject+SBJSON.m */; };
+		F89CC1621327F58300E89173 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC15A1327F58300E89173 /* NSString+SBJSON.m */; };
+		F89CC1631327F58300E89173 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC15C1327F58300E89173 /* SBJsonBase.m */; };
+		F89CC1641327F58300E89173 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC15E1327F58300E89173 /* SBJsonParser.m */; };
+		F89CC1651327F58300E89173 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC1601327F58300E89173 /* SBJsonWriter.m */; };
+		F89CC1C61328073200E89173 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC1C51328073200E89173 /* Utilities.m */; };
+		F89CC1C8132807FE00E89173 /* Errors.plist in Resources */ = {isa = PBXBuildFile; fileRef = F89CC1C7132807FE00E89173 /* Errors.plist */; };
+		F89CC26B132817AF00E89173 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC26A132817AF00E89173 /* Constants.m */; };
+		F89CC2A71328295700E89173 /* SetupPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC2A51328295700E89173 /* SetupPasswordViewController.m */; };
+		F89CC2A81328295700E89173 /* SetupPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89CC2A61328295700E89173 /* SetupPasswordViewController.xib */; };
+		F89CC2B513282CC500E89173 /* CheckPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC2B313282CC500E89173 /* CheckPasswordViewController.m */; };
+		F89CC2B613282CC500E89173 /* CheckPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89CC2B413282CC500E89173 /* CheckPasswordViewController.xib */; };
+		F89CC3EE13284F6700E89173 /* TransferFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC3EC13284F6700E89173 /* TransferFundsViewController.m */; };
+		F8EAD4E81326772600657690 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EAD4E61326772600657690 /* LoginViewController.m */; };
+		F8EAD4E91326772600657690 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EAD4E71326772600657690 /* LoginViewController.xib */; };
+		F8EAD50213268D4400657690 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EAD50113268D4400657690 /* AccountsViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* BankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* BankAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Bank_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bank_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Bank-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bank-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		F8118200132874A500422DF8 /* SelectAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectAccountViewController.h; sourceTree = "<group>"; };
+		F8118201132874A500422DF8 /* SelectAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAccountViewController.m; sourceTree = "<group>"; };
+		F836F28E13269DD100067773 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		F836F28F13269DD100067773 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		F836F29013269DD100067773 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		F836F2A313269F5B00067773 /* StatementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsViewController.h; sourceTree = "<group>"; };
+		F836F2A413269F5B00067773 /* StatementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsViewController.m; sourceTree = "<group>"; };
+		F836F2A513269F5B00067773 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
+		F89CC0DF1327E9FE00E89173 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.h"; sourceTree = "<group>"; };
+		F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
+		F89CC0E11327E9FE00E89173 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASICacheDelegate.h"; sourceTree = "<group>"; };
+		F89CC0E21327E9FE00E89173 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataCompressor.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDataCompressor.h"; sourceTree = "<group>"; };
+		F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataCompressor.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDataCompressor.m"; sourceTree = "<group>"; };
+		F89CC0E41327E9FE00E89173 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataDecompressor.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDataDecompressor.h"; sourceTree = "<group>"; };
+		F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataDecompressor.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDataDecompressor.m"; sourceTree = "<group>"; };
+		F89CC0E61327E9FE00E89173 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDownloadCache.h"; sourceTree = "<group>"; };
+		F89CC0E71327E9FE00E89173 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDownloadCache.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIDownloadCache.m"; sourceTree = "<group>"; };
+		F89CC0E81327E9FE00E89173 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIFormDataRequest.h"; sourceTree = "<group>"; };
+		F89CC0E91327E9FE00E89173 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIFormDataRequest.m"; sourceTree = "<group>"; };
+		F89CC0EA1327E9FE00E89173 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequest.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIHTTPRequest.h"; sourceTree = "<group>"; };
+		F89CC0EB1327E9FE00E89173 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIHTTPRequest.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIHTTPRequest.m"; sourceTree = "<group>"; };
+		F89CC0EC1327E9FE00E89173 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestConfig.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIHTTPRequestConfig.h"; sourceTree = "<group>"; };
+		F89CC0ED1327E9FE00E89173 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIHTTPRequestDelegate.h"; sourceTree = "<group>"; };
+		F89CC0EE1327E9FE00E89173 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIInputStream.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIInputStream.h"; sourceTree = "<group>"; };
+		F89CC0EF1327E9FE00E89173 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIInputStream.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIInputStream.m"; sourceTree = "<group>"; };
+		F89CC0F01327E9FE00E89173 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINetworkQueue.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASINetworkQueue.h"; sourceTree = "<group>"; };
+		F89CC0F11327E9FE00E89173 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASINetworkQueue.m"; sourceTree = "<group>"; };
+		F89CC0F21327E9FE00E89173 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIProgressDelegate.h"; sourceTree = "<group>"; };
+		F89CC0FB1327EA1400E89173 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "ThirdPartyCode/asi-http-request-1.8/External/Reachability/Reachability.h"; sourceTree = "<group>"; };
+		F89CC0FC1327EA1400E89173 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "ThirdPartyCode/asi-http-request-1.8/External/Reachability/Reachability.m"; sourceTree = "<group>"; };
+		F89CC0FE1327EA2800E89173 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		F89CC1021327EA2C00E89173 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F89CC1061327EA3100E89173 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F89CC10A1327EA3800E89173 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		F89CC10F1327F0AE00E89173 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		F89CC1101327F0AE00E89173 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		F89CC1561327F58300E89173 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/JSON.h"; sourceTree = "<group>"; };
+		F89CC1571327F58300E89173 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		F89CC1581327F58300E89173 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		F89CC1591327F58300E89173 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SBJSON.h"; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/NSString+SBJSON.h"; sourceTree = "<group>"; };
+		F89CC15A1327F58300E89173 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SBJSON.m"; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/NSString+SBJSON.m"; sourceTree = "<group>"; };
+		F89CC15B1327F58300E89173 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonBase.h; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonBase.h"; sourceTree = "<group>"; };
+		F89CC15C1327F58300E89173 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonBase.m; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonBase.m"; sourceTree = "<group>"; };
+		F89CC15D1327F58300E89173 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonParser.h"; sourceTree = "<group>"; };
+		F89CC15E1327F58300E89173 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonParser.m"; sourceTree = "<group>"; };
+		F89CC15F1327F58300E89173 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonWriter.h"; sourceTree = "<group>"; };
+		F89CC1601327F58300E89173 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = "ThirdPartyCode/JSON v2.3.2 (iOS)/Classes/SBJsonWriter.m"; sourceTree = "<group>"; };
+		F89CC1C41328073200E89173 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		F89CC1C51328073200E89173 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		F89CC1C7132807FE00E89173 /* Errors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Errors.plist; sourceTree = "<group>"; };
+		F89CC269132817AF00E89173 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F89CC26A132817AF00E89173 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		F89CC2A41328295700E89173 /* SetupPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupPasswordViewController.h; sourceTree = "<group>"; };
+		F89CC2A51328295700E89173 /* SetupPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupPasswordViewController.m; sourceTree = "<group>"; };
+		F89CC2A61328295700E89173 /* SetupPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetupPasswordViewController.xib; sourceTree = "<group>"; };
+		F89CC2B213282CC500E89173 /* CheckPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPasswordViewController.h; sourceTree = "<group>"; };
+		F89CC2B313282CC500E89173 /* CheckPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPasswordViewController.m; sourceTree = "<group>"; };
+		F89CC2B413282CC500E89173 /* CheckPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckPasswordViewController.xib; sourceTree = "<group>"; };
+		F89CC3EB13284F6700E89173 /* TransferFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferFundsViewController.h; sourceTree = "<group>"; };
+		F89CC3EC13284F6700E89173 /* TransferFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferFundsViewController.m; sourceTree = "<group>"; };
+		F8EAD4E51326772600657690 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F8EAD4E61326772600657690 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F8EAD4E71326772600657690 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		F8EAD50013268D4400657690 /* AccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsViewController.h; sourceTree = "<group>"; };
+		F8EAD50113268D4400657690 /* AccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				F89CC0FF1327EA2800E89173 /* CFNetwork.framework in Frameworks */,
+				F89CC1031327EA2C00E89173 /* MobileCoreServices.framework in Frameworks */,
+				F89CC1071327EA3100E89173 /* SystemConfiguration.framework in Frameworks */,
+				F89CC10B1327EA3800E89173 /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F89CC1C41328073200E89173 /* Utilities.h */,
+				F89CC1C51328073200E89173 /* Utilities.m */,
+				F89CC269132817AF00E89173 /* Constants.h */,
+				F89CC26A132817AF00E89173 /* Constants.m */,
+				F89CC10F1327F0AE00E89173 /* SessionManager.h */,
+				F89CC1101327F0AE00E89173 /* SessionManager.m */,
+				1D3623240D0F684500981E51 /* BankAppDelegate.h */,
+				1D3623250D0F684500981E51 /* BankAppDelegate.m */,
+				F8EAD4E51326772600657690 /* LoginViewController.h */,
+				F8EAD4E61326772600657690 /* LoginViewController.m */,
+				F8EAD4E71326772600657690 /* LoginViewController.xib */,
+				F8EAD50013268D4400657690 /* AccountsViewController.h */,
+				F8EAD50113268D4400657690 /* AccountsViewController.m */,
+				F836F28E13269DD100067773 /* MenuViewController.h */,
+				F836F28F13269DD100067773 /* MenuViewController.m */,
+				F836F29013269DD100067773 /* MenuViewController.xib */,
+				F836F2A313269F5B00067773 /* StatementsViewController.h */,
+				F836F2A413269F5B00067773 /* StatementsViewController.m */,
+				F836F2A513269F5B00067773 /* StatementsViewController.xib */,
+				F89CC2A41328295700E89173 /* SetupPasswordViewController.h */,
+				F89CC2A51328295700E89173 /* SetupPasswordViewController.m */,
+				F89CC2A61328295700E89173 /* SetupPasswordViewController.xib */,
+				F89CC2B213282CC500E89173 /* CheckPasswordViewController.h */,
+				F89CC2B313282CC500E89173 /* CheckPasswordViewController.m */,
+				F89CC2B413282CC500E89173 /* CheckPasswordViewController.xib */,
+				F89CC3EB13284F6700E89173 /* TransferFundsViewController.h */,
+				F89CC3EC13284F6700E89173 /* TransferFundsViewController.m */,
+				F8118200132874A500422DF8 /* SelectAccountViewController.h */,
+				F8118201132874A500422DF8 /* SelectAccountViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Bank.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				F89CC0DB1327E9E900E89173 /* ThirdPartyCode */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				F89CC0FE1327EA2800E89173 /* CFNetwork.framework */,
+				F89CC1021327EA2C00E89173 /* MobileCoreServices.framework */,
+				F89CC1061327EA3100E89173 /* SystemConfiguration.framework */,
+				F89CC10A1327EA3800E89173 /* libz.dylib */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Bank_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Bank-Info.plist */,
+				F89CC1C7132807FE00E89173 /* Errors.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F89CC0DB1327E9E900E89173 /* ThirdPartyCode */ = {
+			isa = PBXGroup;
+			children = (
+				F89CC0DF1327E9FE00E89173 /* ASIAuthenticationDialog.h */,
+				F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */,
+				F89CC0E11327E9FE00E89173 /* ASICacheDelegate.h */,
+				F89CC0E21327E9FE00E89173 /* ASIDataCompressor.h */,
+				F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */,
+				F89CC0E41327E9FE00E89173 /* ASIDataDecompressor.h */,
+				F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */,
+				F89CC0E61327E9FE00E89173 /* ASIDownloadCache.h */,
+				F89CC0E71327E9FE00E89173 /* ASIDownloadCache.m */,
+				F89CC0E81327E9FE00E89173 /* ASIFormDataRequest.h */,
+				F89CC0E91327E9FE00E89173 /* ASIFormDataRequest.m */,
+				F89CC0EA1327E9FE00E89173 /* ASIHTTPRequest.h */,
+				F89CC0EB1327E9FE00E89173 /* ASIHTTPRequest.m */,
+				F89CC0EC1327E9FE00E89173 /* ASIHTTPRequestConfig.h */,
+				F89CC0ED1327E9FE00E89173 /* ASIHTTPRequestDelegate.h */,
+				F89CC0EE1327E9FE00E89173 /* ASIInputStream.h */,
+				F89CC0EF1327E9FE00E89173 /* ASIInputStream.m */,
+				F89CC0F01327E9FE00E89173 /* ASINetworkQueue.h */,
+				F89CC0F11327E9FE00E89173 /* ASINetworkQueue.m */,
+				F89CC0F21327E9FE00E89173 /* ASIProgressDelegate.h */,
+				F89CC0FB1327EA1400E89173 /* Reachability.h */,
+				F89CC0FC1327EA1400E89173 /* Reachability.m */,
+				F89CC1561327F58300E89173 /* JSON.h */,
+				F89CC1571327F58300E89173 /* NSObject+SBJSON.h */,
+				F89CC1581327F58300E89173 /* NSObject+SBJSON.m */,
+				F89CC1591327F58300E89173 /* NSString+SBJSON.h */,
+				F89CC15A1327F58300E89173 /* NSString+SBJSON.m */,
+				F89CC15B1327F58300E89173 /* SBJsonBase.h */,
+				F89CC15C1327F58300E89173 /* SBJsonBase.m */,
+				F89CC15D1327F58300E89173 /* SBJsonParser.h */,
+				F89CC15E1327F58300E89173 /* SBJsonParser.m */,
+				F89CC15F1327F58300E89173 /* SBJsonWriter.h */,
+				F89CC1601327F58300E89173 /* SBJsonWriter.m */,
+			);
+			name = ThirdPartyCode;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Bank */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Bank" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bank;
+			productName = Bank;
+			productReference = 1D6058910D05DD3D006BFB54 /* Bank.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Bank" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Bank */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				F8EAD4E91326772600657690 /* LoginViewController.xib in Resources */,
+				F836F29213269DD100067773 /* MenuViewController.xib in Resources */,
+				F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */,
+				F89CC1C8132807FE00E89173 /* Errors.plist in Resources */,
+				F89CC2A81328295700E89173 /* SetupPasswordViewController.xib in Resources */,
+				F89CC2B613282CC500E89173 /* CheckPasswordViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* BankAppDelegate.m in Sources */,
+				F8EAD4E81326772600657690 /* LoginViewController.m in Sources */,
+				F8EAD50213268D4400657690 /* AccountsViewController.m in Sources */,
+				F836F29113269DD100067773 /* MenuViewController.m in Sources */,
+				F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */,
+				F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */,
+				F89CC0F41327E9FE00E89173 /* ASIDataCompressor.m in Sources */,
+				F89CC0F51327E9FE00E89173 /* ASIDataDecompressor.m in Sources */,
+				F89CC0F61327E9FE00E89173 /* ASIDownloadCache.m in Sources */,
+				F89CC0F71327E9FE00E89173 /* ASIFormDataRequest.m in Sources */,
+				F89CC0F81327E9FE00E89173 /* ASIHTTPRequest.m in Sources */,
+				F89CC0F91327E9FE00E89173 /* ASIInputStream.m in Sources */,
+				F89CC0FA1327E9FE00E89173 /* ASINetworkQueue.m in Sources */,
+				F89CC0FD1327EA1400E89173 /* Reachability.m in Sources */,
+				F89CC1111327F0AE00E89173 /* SessionManager.m in Sources */,
+				F89CC1611327F58300E89173 /* NSObject+SBJSON.m in Sources */,
+				F89CC1621327F58300E89173 /* NSString+SBJSON.m in Sources */,
+				F89CC1631327F58300E89173 /* SBJsonBase.m in Sources */,
+				F89CC1641327F58300E89173 /* SBJsonParser.m in Sources */,
+				F89CC1651327F58300E89173 /* SBJsonWriter.m in Sources */,
+				F89CC1C61328073200E89173 /* Utilities.m in Sources */,
+				F89CC26B132817AF00E89173 /* Constants.m in Sources */,
+				F89CC2A71328295700E89173 /* SetupPasswordViewController.m in Sources */,
+				F89CC2B513282CC500E89173 /* CheckPasswordViewController.m in Sources */,
+				F89CC3EE13284F6700E89173 /* TransferFundsViewController.m in Sources */,
+				F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Bank_Prefix.pch;
+				INFOPLIST_FILE = "Bank-Info.plist";
+				PRODUCT_NAME = Bank;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Bank_Prefix.pch;
+				INFOPLIST_FILE = "Bank-Info.plist";
+				PRODUCT_NAME = Bank;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Bank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Bank" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

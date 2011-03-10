@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>E1</key>
+	<string>Incorrect username or password</string>
+	<key>E2</key>
+	<string>Invalid session key</string>
+	<key>E3</key>
+	<string>Account does not exist</string>
+	<key>E4</key>
+	<string>Balance too low</string>
+	<key>E5</key>
+	<string>Forbidden</string>
+	<key>E6</key>
+	<string>Permission Denied</string>
+</dict>
+</plist>
