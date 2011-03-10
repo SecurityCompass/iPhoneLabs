@@ -6,9 +6,9 @@
 @interface TransferFundsViewController : UITableViewController <SelectAccountViewControllerDelegate> {
   @private
 	NSUInteger _selectedRow;
-	NSArray* _accountNames;
-	NSString* _fromAccount;
-	NSString* _toAccount;
+	NSArray* _accounts;
+	NSUInteger _fromAccountIndex;
+	NSUInteger _toAccountIndex;
 }
 
 @end
