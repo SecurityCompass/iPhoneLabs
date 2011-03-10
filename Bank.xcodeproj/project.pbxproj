@@ -17,6 +17,7 @@
 		F836F29113269DD100067773 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F28F13269DD100067773 /* MenuViewController.m */; };
 		F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F2A413269F5B00067773 /* StatementsViewController.m */; };
 		F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F2A513269F5B00067773 /* StatementsViewController.xib */; };
+		F85DB1C613293D92001FF0A2 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DB1C513293D92001FF0A2 /* Networking.m */; };
 		F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */; };
 		F89CC0F41327E9FE00E89173 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */; };
 		F89CC0F51327E9FE00E89173 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */; };
@@ -67,6 +68,8 @@
 		F836F2A313269F5B00067773 /* StatementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsViewController.h; sourceTree = "<group>"; };
 		F836F2A413269F5B00067773 /* StatementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsViewController.m; sourceTree = "<group>"; };
 		F836F2A513269F5B00067773 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
+		F85DB1C413293D92001FF0A2 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
+		F85DB1C513293D92001FF0A2 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
 		F89CC0DF1327E9FE00E89173 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.h"; sourceTree = "<group>"; };
 		F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
 		F89CC0E11327E9FE00E89173 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASICacheDelegate.h"; sourceTree = "<group>"; };
@@ -151,6 +154,8 @@
 				F89CC1C51328073200E89173 /* Utilities.m */,
 				F89CC269132817AF00E89173 /* Constants.h */,
 				F89CC26A132817AF00E89173 /* Constants.m */,
+				F85DB1C413293D92001FF0A2 /* Networking.h */,
+				F85DB1C513293D92001FF0A2 /* Networking.m */,
 				F89CC10F1327F0AE00E89173 /* SessionManager.h */,
 				F89CC1101327F0AE00E89173 /* SessionManager.m */,
 				1D3623240D0F684500981E51 /* BankAppDelegate.h */,
@@ -365,6 +370,7 @@
 				F89CC2B513282CC500E89173 /* CheckPasswordViewController.m in Sources */,
 				F89CC3EE13284F6700E89173 /* TransferFundsViewController.m in Sources */,
 				F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */,
+				F85DB1C613293D92001FF0A2 /* Networking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
