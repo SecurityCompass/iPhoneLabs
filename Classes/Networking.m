@@ -152,3 +152,45 @@ BOOL BankTransferFunds(NSString* fromAccount, NSString* toAccount, NSString* amo
 
 	return success;
 }
+
+NSString* _BankDownloadStatement(NSString* sessionKey, NSError** error, NSString** applicationError)
+{
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/statement?session_key=%@", kBankServiceURL,
+		BankEscapeQueryParameter(sessionKey)]];
+	
+	ASIHTTPRequest* request= [ASIHTTPRequest requestWithURL: url];
+	[request startSynchronous];
+	
+	if (request.error != nil) {
+		*error = request.error;
+		return nil;
+	}
+
+	return [request responseString];
+}
+
+NSString* BankDownloadStatement(NSError** error, NSString** applicationError)
+{
+	*error = nil;
+	*applicationError = nil;
+
+	NSString* sessionKey = _BankRefreshSession(NO, error, applicationError);
+	if (sessionKey == nil) {
+		return NO;
+	}
+
+	//
+
+	NSString* statement = _BankDownloadStatement(sessionKey, error, applicationError);
+//	if (statement == nil && [*applicationError isEqualToString: @"E2"])
+//	{
+//		sessionKey = _BankRefreshSession(YES, error, applicationError);
+//		if (sessionKey == nil) {
+//			return NO;
+//		}
+//		
+//		success = _BankTransferFunds(sessionKey, fromAccount, toAccount, amount, error, applicationError);
+//	}
+	
+	return statement;
+}
