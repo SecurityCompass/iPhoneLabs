@@ -15,7 +15,6 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		F8118202132874A500422DF8 /* SelectAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8118201132874A500422DF8 /* SelectAccountViewController.m */; };
 		F836F29113269DD100067773 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F28F13269DD100067773 /* MenuViewController.m */; };
-		F836F29213269DD100067773 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F29013269DD100067773 /* MenuViewController.xib */; };
 		F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F2A413269F5B00067773 /* StatementsViewController.m */; };
 		F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F836F2A513269F5B00067773 /* StatementsViewController.xib */; };
 		F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */; };
@@ -65,7 +64,6 @@
 		F8118201132874A500422DF8 /* SelectAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAccountViewController.m; sourceTree = "<group>"; };
 		F836F28E13269DD100067773 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		F836F28F13269DD100067773 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
-		F836F29013269DD100067773 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		F836F2A313269F5B00067773 /* StatementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementsViewController.h; sourceTree = "<group>"; };
 		F836F2A413269F5B00067773 /* StatementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsViewController.m; sourceTree = "<group>"; };
 		F836F2A513269F5B00067773 /* StatementsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatementsViewController.xib; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				F8EAD50113268D4400657690 /* AccountsViewController.m */,
 				F836F28E13269DD100067773 /* MenuViewController.h */,
 				F836F28F13269DD100067773 /* MenuViewController.m */,
-				F836F29013269DD100067773 /* MenuViewController.xib */,
 				F836F2A313269F5B00067773 /* StatementsViewController.h */,
 				F836F2A413269F5B00067773 /* StatementsViewController.m */,
 				F836F2A513269F5B00067773 /* StatementsViewController.xib */,
@@ -327,7 +324,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				F8EAD4E91326772600657690 /* LoginViewController.xib in Resources */,
-				F836F29213269DD100067773 /* MenuViewController.xib in Resources */,
 				F836F2A713269F5B00067773 /* StatementsViewController.xib in Resources */,
 				F89CC1C8132807FE00E89173 /* Errors.plist in Resources */,
 				F89CC2A81328295700E89173 /* SetupPasswordViewController.xib in Resources */,
