@@ -5,16 +5,16 @@
 @class SelectAccountViewController;
 
 @protocol SelectAccountViewControllerDelegate <NSObject>
-- (void) selectAccountViewController: (SelectAccountViewController*) vc didSelectAccount: (NSString*) account;
+- (void) selectAccountViewController: (SelectAccountViewController*) vc didSelectAccountIndex: (NSUInteger) accountIndex;
 - (void) selectAccountViewControllerDidCancel: (SelectAccountViewController*) vc;
 @end
 
 @interface SelectAccountViewController : UITableViewController {
   @private
-	NSArray* _accountNames;
+	NSArray* _accounts;
 	id<SelectAccountViewControllerDelegate> _delegate;
 }
 
-- (id) initWithAccountNames: (NSArray*) accountNames delegate: (id<SelectAccountViewControllerDelegate>) delegate;
+- (id) initWithAccounts: (NSArray*) accounts delegate: (id<SelectAccountViewControllerDelegate>) delegate;
 
 @end

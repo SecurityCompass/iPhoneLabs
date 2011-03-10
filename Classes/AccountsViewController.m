@@ -5,6 +5,7 @@
 #import "SessionManager.h"
 #import "Constants.h"
 #import "Utilities.h"
+#import "Networking.h"
 #import "BankAppDelegate.h"
 #import "ASIFormDataRequest.h"
 
@@ -29,81 +30,25 @@
 	// Set the cell height globally
 
 	self.tableView.rowHeight = 72;
-	
-	// We keep the accounts in an array
-
-	_accounts = [NSMutableArray new];
 }
 
-- (void) updateSession
+- (void) viewDidAppear: (BOOL) animated
 {
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", kBankServiceURL]];
-	NSLog(@"Requesting %@", [url absoluteString]);
+	NSError* error = nil;
+	NSString* applicationError = nil;
 
-	ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL: url];
-	[request setPostValue: [[NSUserDefaults standardUserDefaults] objectForKey: @"Username"] forKey: @"username"];
-	[request setPostValue: [[NSUserDefaults standardUserDefaults] objectForKey: @"Password"] forKey: @"password"];
-	[request startSynchronous];
-	
-	NSDictionary* dictionary = [[request responseString] JSONValue];
-
-	SessionManager* sessionManager = [SessionManager sharedSessionManager];
-	sessionManager.sessionKey = [dictionary objectForKey: @"key"];
-}
-
-- (void) updateData
-{
-	// If we do not have a session then login to get the session key
-	
-	SessionManager* sessionManager = [SessionManager sharedSessionManager];
-	if (sessionManager.sessionKey == nil) {
-		[self updateSession];
-	}
-	
-	// Request the accounts
-
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/accounts?session_key=%@", kBankServiceURL,
-		BankEscapeQueryParameter(sessionManager.sessionKey)]];
-	
-	NSLog(@"Requesting %@", [url absoluteString]);
-	
-	// Start the HTTP request in the background
-	
-	ASIHTTPRequest* request= [ASIHTTPRequest requestWithURL: url];
-	[request startSynchronous];
-	
-	if (request.error != nil) {
-		BankDisplayErrorAlertView(request.error, self);
+	NSArray* accounts = BankGetAccounts(&error, &applicationError);
+	if (accounts != nil) {
+		_accounts = [accounts retain];
+		[self.tableView reloadData];
 	} else {
-		NSString *responseString = [request responseString];
-		NSLog(@"Response = %@", responseString);
-
-		if (request.responseStatusCode != 200) {
-			BankDisplayAlertView(@"The server returned an unexpected response", self);
-		} else {
-			id response = [[request responseString] JSONValue];
-			if ([response isKindOfClass: [NSDictionary class]]) {
-				NSDictionary* dictionary = response;
-				if ([dictionary objectForKey: @"error"] != nil) {
-					NSString* error = [dictionary objectForKey: @"error"];
-					if ([error isEqualToString: @"E2"]) {
-						[self updateSession];
-						[self updateData];
-					} else {
-						BankDisplayApplicationErrorAlertView(error, self);
-					}
-				}
-			} else {
-				[_accounts addObjectsFromArray: response];
-				[self.tableView reloadData];
-			}
+		if (error != nil) {
+			BankDisplayErrorAlertView(error, nil);
+		}
+		else if (applicationError != nil) {
+			BankDisplayApplicationErrorAlertView(applicationError, nil);
 		}
 	}
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-	[self updateData];
 }
 
 #pragma mark -

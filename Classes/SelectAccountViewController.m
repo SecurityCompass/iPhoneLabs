@@ -4,10 +4,10 @@
 
 @implementation SelectAccountViewController
 
-- (id) initWithAccountNames: (NSArray*) accountNames delegate: (id<SelectAccountViewControllerDelegate>) delegate
+- (id) initWithAccounts: (NSArray*) accounts delegate: (id<SelectAccountViewControllerDelegate>) delegate
 {
 	if ((self = [super initWithStyle: UITableViewStyleGrouped]) != nil) {
-		_accountNames = [accountNames retain];
+		_accounts = [accounts retain];
 		_delegate = delegate;
 	}
 	return self;
@@ -15,7 +15,7 @@
 
 - (void) dealloc
 {
-	[_accountNames release];
+	[_accounts release];
 	[super dealloc];
 }
 
@@ -38,7 +38,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [_accountNames count];
+	return [_accounts count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -50,7 +50,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [_accountNames objectAtIndex: indexPath.row];
+	NSDictionary* account = [_accounts objectAtIndex: indexPath.row];
+    cell.textLabel.text = [account objectForKey: @"type"];
     
     return cell;
 }
@@ -59,7 +60,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[_delegate selectAccountViewController: self didSelectAccount: [_accountNames objectAtIndex: indexPath.row]];
+	[_delegate selectAccountViewController: self didSelectAccountIndex: indexPath.row];
 }
 
 #pragma mark -

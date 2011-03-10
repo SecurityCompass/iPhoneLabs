@@ -1,5 +1,7 @@
 //  TransferFundsViewController.m
 
+#import "Networking.h"
+#import "Utilities.h"
 #import "TransferFundsViewController.h"
 #import "SelectAccountViewController.h"
 
@@ -8,15 +10,15 @@
 - (id) init
 {
 	if ((self = [super initWithStyle: UITableViewStyleGrouped]) != nil) {
-		_accountNames = [[NSArray arrayWithObjects: @"Savings", @"Checking", @"Credit", nil] retain];
-		_fromAccount = [[_accountNames objectAtIndex: 0] retain];
-		_toAccount = [[_accountNames objectAtIndex: 1] retain];
+		_fromAccountIndex = 0;
+		_toAccountIndex = 1;
 	}
 	return self;
 }
 
 - (void) dealloc
 {
+	[_accounts release];
 	[super dealloc];
 }
 
@@ -30,6 +32,17 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Transfer" style: UIBarButtonItemStyleDone
 		target: self action: @selector(transfer)];
 	self.navigationItem.rightBarButtonItem.enabled = NO;
+	
+	// Grab the accounts from the server. This is blocking. In a more real-world application, this network call would
+	// be asynchronous. For the sake of simplicity we simply use synchronous requests here.
+	
+	NSError* error;
+	NSString* applicationError;
+
+	NSArray* accounts = BankGetAccounts(&error, &applicationError);
+	if (accounts != nil) {
+		_accounts = [accounts retain];
+	}
 }
 
 #pragma mark -
@@ -88,15 +101,20 @@
 	{
 		switch (indexPath.row)
 		{
-			case 0:
+			case 0: {
 				cell.textLabel.text = @"Amount:";
 				break;
-			case 1:
-				cell.textLabel.text = [NSString stringWithFormat: @"From: %@", _fromAccount];
+			}
+			case 1: {
+				NSDictionary* account = [_accounts objectAtIndex: _fromAccountIndex];
+				cell.textLabel.text = [NSString stringWithFormat: @"From: %@", [account objectForKey: @"type"]];
 				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat: @"To: %@", _toAccount];
+			}
+			case 2: {
+				NSDictionary* account = [_accounts objectAtIndex: _toAccountIndex];
+				cell.textLabel.text = [NSString stringWithFormat: @"To: %@", [account objectForKey: @"type"]];
 				break;
+			}
 		}
 	}
     
@@ -126,7 +144,7 @@
 {
 	if (indexPath.row == 1 || indexPath.row == 2) {
 		_selectedRow = indexPath.row;
-		SelectAccountViewController* selectAccountViewController = [[[SelectAccountViewController alloc] initWithAccountNames: _accountNames delegate: self] autorelease];
+		SelectAccountViewController* selectAccountViewController = [[[SelectAccountViewController alloc] initWithAccounts: _accounts delegate: self] autorelease];
 		[self.navigationController pushViewController: selectAccountViewController animated: YES];
 	}
 
@@ -140,15 +158,14 @@
 	[self.navigationController popViewControllerAnimated: YES];
 }
 
-- (void) selectAccountViewController:(SelectAccountViewController *)vc didSelectAccount:(NSString*)account
+- (void) selectAccountViewController: (SelectAccountViewController*) vc didSelectAccountIndex: (NSUInteger) accountIndex
 {
 	if (_selectedRow == 1) {
-		[_fromAccount release];
-		_fromAccount = [account retain];
-	} else {
-		[_toAccount release];
-		_toAccount = [account retain];
+		_fromAccountIndex = accountIndex;
+	} else if (_selectedRow == 2) {
+		_toAccountIndex = accountIndex;
 	}
+
 	[self.tableView reloadData];
 	[self.navigationController popViewControllerAnimated: YES];
 }
@@ -164,8 +181,28 @@
 
 - (void) transfer
 {
-	[self.navigationController popViewControllerAnimated: YES];
+	NSError* error = nil;
+	NSString* applicationError = nil;
+	
+	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+	UITextField* textField = (UITextField*) [cell viewWithTag: 1];
+
+	NSDictionary* fromAccount = [_accounts objectAtIndex: _fromAccountIndex];
+	NSDictionary* toAccount = [_accounts objectAtIndex: _toAccountIndex];
+	NSString* amount = textField.text;
+
+	if (BankTransferFunds([[fromAccount objectForKey: @"account_number"] description], [[toAccount objectForKey: @"account_number"] description], amount, &error, &applicationError) == NO) {
+		if (error != nil) {
+			BankDisplayErrorAlertView(error, nil);
+		}
+		else if (applicationError != nil) {
+			BankDisplayApplicationErrorAlertView(applicationError, nil);
+		}
+	} else {
+		[self.navigationController popViewControllerAnimated: YES];
+	}
 }
 
 @end
 
+	
