@@ -67,6 +67,7 @@ static NSArray* _BankGetAccounts(NSString* sessionKey, NSError** error, NSString
 	
 	if ([response isKindOfClass: [NSDictionary class]] && [response objectForKey: @"error"]) {
 		*applicationError = [response objectForKey: @"error"];
+		return nil;
 	}
 	
 	return response;
