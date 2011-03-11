@@ -8,6 +8,11 @@
 #import "Utilities.h"
 #import "Networking.h"
 
+/**
+ * Login to the bank service. Returns the session key on success. On failure it returns nil and sets
+ * the error and applicationError parameters.
+ */
+
 NSString* BankLogin(NSString* username, NSString* password, NSError** error, NSString** applicationError)
 {
 	*error = nil;
@@ -73,6 +78,11 @@ static NSArray* _BankGetAccounts(NSString* sessionKey, NSError** error, NSString
 	return response;
 }
 
+/**
+ * Call the bank API to load the list of accounts. Returns an array of dictionaries with on success. On failure it
+ * returns nil and sets the error and applicationError parameters.
+ */
+
 NSArray* BankGetAccounts(NSError** error, NSString** applicationError)
 {
 	*error = nil;
@@ -125,6 +135,11 @@ BOOL _BankTransferFunds(NSString* sessionKey, NSString* fromAccount, NSString* t
 	return YES;
 }
 
+/**
+ * Call the Bank API to transfer funds. Returns TRUE on success or FALSE on failure. In case of failure it also
+ * sets the error and applicationError.
+ */
+
 BOOL BankTransferFunds(NSString* fromAccount, NSString* toAccount, NSString* amount, NSError** error, NSString** applicationError)
 {
 	NSLog(@"Transferring %@ from %@ to %@", amount, fromAccount, toAccount);
@@ -166,8 +181,25 @@ NSString* _BankDownloadStatement(NSString* sessionKey, NSError** error, NSString
 		return nil;
 	}
 
+	// This is a bit of a kludge. The API can also return JSON in case of an error. So we try to recognize
+	// that by checking if the response is a JSON dictionary. Not perfect but works.
+	
+	if ([[request responseString] hasPrefix: @"{"])
+	{
+		NSDictionary* response = [[request responseString] JSONValue];
+		if ([response isKindOfClass: [NSDictionary class]] && [response objectForKey: @"error"]) {
+			*applicationError = [response objectForKey: @"error"];
+			return nil;
+		}
+	}
+
 	return [request responseString];
 }
+
+/**
+ * Call the bank API to download the currently available statement. Returns the contents of the statement (html) as
+ * a result on success. Returns nil and sets the error and applicationError parameters on failure.
+ */
 
 NSString* BankDownloadStatement(NSError** error, NSString** applicationError)
 {
@@ -182,15 +214,15 @@ NSString* BankDownloadStatement(NSError** error, NSString** applicationError)
 	//
 
 	NSString* statement = _BankDownloadStatement(sessionKey, error, applicationError);
-//	if (statement == nil && [*applicationError isEqualToString: @"E2"])
-//	{
-//		sessionKey = _BankRefreshSession(YES, error, applicationError);
-//		if (sessionKey == nil) {
-//			return NO;
-//		}
-//		
-//		success = _BankTransferFunds(sessionKey, fromAccount, toAccount, amount, error, applicationError);
-//	}
+	if (statement == nil && [*applicationError isEqualToString: @"E2"])
+	{
+		sessionKey = _BankRefreshSession(YES, error, applicationError);
+		if (sessionKey == nil) {
+			return NO;
+		}
+		
+		statement = _BankDownloadStatement(sessionKey, error, applicationError);
+	}
 	
 	return statement;
 }
