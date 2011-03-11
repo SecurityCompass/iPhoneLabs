@@ -24,7 +24,7 @@
 
 - (void) viewDidLoad
 {
-	//_webView.delegate = self;
+	_webView.dataDetectorTypes = UIDataDetectorTypeNone;
 
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
 	NSString* statementPath = [documentsDirectory stringByAppendingPathComponent: _statementName];
