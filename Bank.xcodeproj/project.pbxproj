@@ -17,6 +17,7 @@
 		F836F29113269DD100067773 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F28F13269DD100067773 /* MenuViewController.m */; };
 		F836F2A613269F5B00067773 /* StatementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F836F2A413269F5B00067773 /* StatementsViewController.m */; };
 		F83F74D013382D6300B5F7CB /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F74CF13382D6300B5F7CB /* Account.m */; };
+		F83F74D71338430800B5F7CB /* NSString+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F74D61338430800B5F7CB /* NSString+SHA.m */; };
 		F85DB1C613293D92001FF0A2 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DB1C513293D92001FF0A2 /* Networking.m */; };
 		F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F863A585132970030040E7AC /* StatementDetailViewController.m */; };
 		F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F863A586132970030040E7AC /* StatementDetailViewController.xib */; };
@@ -71,6 +72,8 @@
 		F836F2A413269F5B00067773 /* StatementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementsViewController.m; sourceTree = "<group>"; };
 		F83F74CE13382D6300B5F7CB /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		F83F74CF13382D6300B5F7CB /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		F83F74D51338430800B5F7CB /* NSString+SHA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA.h"; sourceTree = "<group>"; };
+		F83F74D61338430800B5F7CB /* NSString+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA.m"; sourceTree = "<group>"; };
 		F85DB1C413293D92001FF0A2 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		F85DB1C513293D92001FF0A2 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
 		F863A584132970030040E7AC /* StatementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementDetailViewController.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				F8118201132874A500422DF8 /* SelectAccountViewController.m */,
 				F83F74CE13382D6300B5F7CB /* Account.h */,
 				F83F74CF13382D6300B5F7CB /* Account.m */,
+				F83F74D51338430800B5F7CB /* NSString+SHA.h */,
+				F83F74D61338430800B5F7CB /* NSString+SHA.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 				F85DB1C613293D92001FF0A2 /* Networking.m in Sources */,
 				F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */,
 				F83F74D013382D6300B5F7CB /* Account.m in Sources */,
+				F83F74D71338430800B5F7CB /* NSString+SHA.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,6 @@
 // BankAppDelegate.m
 
+#import "NSString+SHA.h"
 #import "BankAppDelegate.h"
 #import "SessionManager.h"
 #import "MenuViewController.h"
@@ -11,10 +12,13 @@
 
 - (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *)password
 {
-	// Store the username and password in the application's preferences
+	// Store the username and password in the application's preferences. We also store the password as a
+	// SHA256 hashed value.
+	
+	NSData* hashedMasterPassword = [password SHA256Hash];
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	[userDefaults setObject: password forKey: @"MasterPassword"];
+	[userDefaults setObject: hashedMasterPassword forKey: @"MasterPassword"];
 	[userDefaults setObject: _username forKey: @"Username"];
 	[userDefaults setObject: _password forKey: @"Password"];
 	[userDefaults synchronize];
@@ -86,10 +90,12 @@
 
 - (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *)password
 {
-	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	NSString* correctMasterPassword = [userDefaults objectForKey: @"MasterPassword"];
+	NSString* hashedPassword = [password SHA256Hash];
 
-	if ([password isEqualToString: correctMasterPassword])
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	NSData* correctHashedMasterPassword = [userDefaults objectForKey: @"MasterPassword"];
+
+	if ([hashedPassword isEqualToData: correctHashedMasterPassword])
 	{
 		MenuViewController* menuViewController = [[MenuViewController new] autorelease];
 		if (menuViewController != nil) {
