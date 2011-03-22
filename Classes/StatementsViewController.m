@@ -9,43 +9,68 @@
 - (void) saveStatement: (NSString*) statement
 {
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
-	NSString* path = [[documentsDirectory stringByAppendingPathComponent: @"Statement"] stringByAppendingPathExtension: @"statement"];
+	NSString* path = [[documentsDirectory stringByAppendingPathComponent:
+		[NSString stringWithFormat: @"%u", (unsigned long) [[NSDate date] timeIntervalSince1970]]]
+			stringByAppendingPathExtension: @"statement"];
 	[statement writeToFile: path atomically: YES encoding: NSUTF8StringEncoding error: nil];
 }
 
 - (void) scanStatements
 {
+	[_statements release];
+	_statements = nil;
+
+	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
+	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: documentsDirectory error: nil];
+
+	_statements = [[files filteredArrayUsingPredicate: [NSPredicate predicateWithFormat: @"self ENDSWITH '.statement'"]] retain];
+	
+	[self.tableView reloadData];
+}
+
+- (void) loadStatement
+{
+	NSError* error = nil;
+	NSString* applicationError = nil;
+
+	NSString* statement = BankDownloadStatement(&error, &applicationError);
+	if (statement != nil) {
+		[self saveStatement: statement];
+	}
+}
+
+- (void) deleteStatements
+{
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
 	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: documentsDirectory error: nil];
 	
-	[_statements release];
-	_statements = nil;
+	for (NSString* file in files)
+	{
+		if ([[file pathExtension] isEqualToString: @"statement"])
+		{
+			NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
+			[[NSFileManager defaultManager] removeItemAtPath: path error: NULL];
+		}
+	}
 	
-	_statements = [[files filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self ENDSWITH '.statement'"]] retain];
+}
+
+- (void) clear
+{
+	[self deleteStatements];	
+	[self scanStatements];
 }
 
 - (void) viewDidLoad
 {
-	// Look for .statement files in the Documents directory
-
-	[self scanStatements];
-		
-	// If we have no statements then we download the default one
+	// Add a login button to the navigation bar
 	
-	if ([_statements count] == 0)
-	{
-		NSError* error = nil;
-		NSString* applicationError = nil;
-		
-		NSString* statement = BankDownloadStatement(&error, &applicationError);
-		if (statement != nil) {
-			[self saveStatement: statement];
-		}
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Clear" style: UIBarButtonItemStylePlain target: self action: @selector(clear)];
 
-		// Update the list of known statements
+	// Add a statement and scan for all available downloaded statements
 
-		[self scanStatements];
-	}
+	[self loadStatement];
+	[self scanStatements];
 }
 
 - (void) viewDidUnload
@@ -74,8 +99,14 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    cell.textLabel.text = [_statements objectAtIndex: indexPath.row];
+	
+	NSDateFormatter* formatter = [[NSDateFormatter new] autorelease];
+	[formatter setDateStyle: NSDateFormatterMediumStyle];
+	[formatter setTimeStyle: NSDateFormatterLongStyle];
+	
+	NSString* statementName = [_statements objectAtIndex: indexPath.row];
+	NSString* timestamp = [statementName stringByDeletingPathExtension];
+    cell.textLabel.text = [formatter stringFromDate: [NSDate dateWithTimeIntervalSince1970: [timestamp doubleValue]]];
     
     return cell;
 }
