@@ -19,6 +19,7 @@
 		F83F74D013382D6300B5F7CB /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F74CF13382D6300B5F7CB /* Account.m */; };
 		F83F74D71338430800B5F7CB /* NSString+SHA.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F74D61338430800B5F7CB /* NSString+SHA.m */; };
 		F83F74D91338451400B5F7CB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F83F74D81338451400B5F7CB /* Settings.bundle */; };
+		F83F74E01338EE1000B5F7CB /* NSString+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = F83F74DF1338EE1000B5F7CB /* NSString+Random.m */; };
 		F85DB1C613293D92001FF0A2 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DB1C513293D92001FF0A2 /* Networking.m */; };
 		F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F863A585132970030040E7AC /* StatementDetailViewController.m */; };
 		F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F863A586132970030040E7AC /* StatementDetailViewController.xib */; };
@@ -76,6 +77,8 @@
 		F83F74D51338430800B5F7CB /* NSString+SHA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SHA.h"; sourceTree = "<group>"; };
 		F83F74D61338430800B5F7CB /* NSString+SHA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SHA.m"; sourceTree = "<group>"; };
 		F83F74D81338451400B5F7CB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F83F74DE1338EE1000B5F7CB /* NSString+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Random.h"; sourceTree = "<group>"; };
+		F83F74DF1338EE1000B5F7CB /* NSString+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Random.m"; sourceTree = "<group>"; };
 		F85DB1C413293D92001FF0A2 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		F85DB1C513293D92001FF0A2 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
 		F863A584132970030040E7AC /* StatementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementDetailViewController.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 				F83F74CF13382D6300B5F7CB /* Account.m */,
 				F83F74D51338430800B5F7CB /* NSString+SHA.h */,
 				F83F74D61338430800B5F7CB /* NSString+SHA.m */,
+				F83F74DE1338EE1000B5F7CB /* NSString+Random.h */,
+				F83F74DF1338EE1000B5F7CB /* NSString+Random.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */,
 				F83F74D013382D6300B5F7CB /* Account.m in Sources */,
 				F83F74D71338430800B5F7CB /* NSString+SHA.m in Sources */,
+				F83F74E01338EE1000B5F7CB /* NSString+Random.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

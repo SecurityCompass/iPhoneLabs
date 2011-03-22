@@ -1,6 +1,7 @@
 // BankAppDelegate.m
 
 #import "NSString+SHA.h"
+#import "NSString+Random.h"
 #import "BankAppDelegate.h"
 #import "SessionManager.h"
 #import "MenuViewController.h"
@@ -16,10 +17,12 @@
 	// Store the username and password in the application's preferences. We also store the password as a
 	// SHA256 hashed value.
 	
-	NSData* hashedMasterPassword = [password SHA256Hash];
+	NSMutableString* salt = [NSString randomStringWithLength: 32];
+	NSData* hashedMasterPassword = [[salt stringByAppendingString: password] SHA256Hash];
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject: hashedMasterPassword forKey: @"MasterPassword"];
+	[userDefaults setObject: salt forKey: @"MasterPasswordSalt"];
 	[userDefaults setObject: _username forKey: @"Username"];
 	[userDefaults setObject: _password forKey: @"Password"];
 	[userDefaults synchronize];
@@ -91,9 +94,11 @@
 
 - (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *)password
 {
-	NSData* hashedPassword = [password SHA256Hash];
-
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+
+	NSString* salt = [userDefaults objectForKey: @"MasterPasswordSalt"];
+	NSData* hashedPassword = [[salt stringByAppendingString: password] SHA256Hash];
+
 	NSData* correctHashedMasterPassword = [userDefaults objectForKey: @"MasterPassword"];
 
 	if ([hashedPassword isEqualToData: correctHashedMasterPassword])
