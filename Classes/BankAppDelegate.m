@@ -120,6 +120,18 @@
     return YES;
 }
 
+- (void) applicationWillResignActive:(UIApplication *)application
+{
+	// If we are put in the background then go to the unlock screen. But only if
+	// the app was configured with both bank account info and internal password.
+
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults objectForKey: @"MasterPassword"] != nil) {
+		[[SessionManager sharedSessionManager] invalidate];
+		[self unlockApplication];
+	}
+}
+
 - (void) dealloc
 {
 	[_navigationController release];
