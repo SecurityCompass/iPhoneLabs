@@ -4,6 +4,7 @@
 #import "BankAppDelegate.h"
 #import "SessionManager.h"
 #import "MenuViewController.h"
+#import "Constants.h"
 #import "Utilities.h"
 
 @implementation BankAppDelegate
@@ -90,7 +91,7 @@
 
 - (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *)password
 {
-	NSString* hashedPassword = [password SHA256Hash];
+	NSData* hashedPassword = [password SHA256Hash];
 
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	NSData* correctHashedMasterPassword = [userDefaults objectForKey: @"MasterPassword"];
@@ -117,6 +118,12 @@
 
 - (BOOL) application: (UIApplication*) application didFinishLaunchingWithOptions: (NSDictionary*) launchOptions
 {
+	// Setup the defaults
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults:
+		[NSDictionary dictionaryWithObject: kDefaultBankServiceURL forKey: @"BankServiceURL"]];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+
 	// The root of our application is a UINavigationViewController. We will push all views on it.
 	
 	_navigationController = [UINavigationController new];

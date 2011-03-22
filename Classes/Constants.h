@@ -2,4 +2,4 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString* kBankServiceURL;
+extern NSString* kDefaultBankServiceURL;

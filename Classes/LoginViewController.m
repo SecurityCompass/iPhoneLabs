@@ -177,7 +177,8 @@
 	
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 	
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", kBankServiceURL]];
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", [defaults objectForKey: @"BankServiceURL"]]];
 	
 	_request = [[ASIFormDataRequest requestWithURL: url] retain];
 	[_request setPostValue: _usernameTextField.text forKey: @"username"];

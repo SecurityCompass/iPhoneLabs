@@ -19,7 +19,8 @@ NSString* BankLogin(NSString* username, NSString* password, NSError** error, NSS
 	*error = nil;
 	*applicationError = nil;
 
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", kBankServiceURL]];
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", [defaults valueForKey: @"BankServiceURL"]]];
 
 	ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL: url];
 	[request setPostValue: [[NSUserDefaults standardUserDefaults] objectForKey: @"Username"] forKey: @"username"];
@@ -60,7 +61,10 @@ static NSString* _BankRefreshSession(BOOL force, NSError** error, NSString** app
 
 static NSArray* _BankGetAccounts(NSString* sessionKey, NSError** error, NSString** applicationError)
 {
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/accounts?session_key=%@", kBankServiceURL, BankEscapeQueryParameter(sessionKey)]];
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/accounts?session_key=%@",
+		[defaults stringForKey: @"BankServiceURL"], BankEscapeQueryParameter(sessionKey)]];
+
 	ASIHTTPRequest* request= [ASIHTTPRequest requestWithURL: url];
 	[request startSynchronous];
 	
@@ -127,7 +131,9 @@ NSArray* BankGetAccounts(NSError** error, NSString** applicationError)
 
 BOOL _BankTransferFunds(NSString* sessionKey, NSString* fromAccount, NSString* toAccount, NSString* amount, NSError** error, NSString** applicationError)
 {
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/transfer?session_key=%@", kBankServiceURL, BankEscapeQueryParameter(sessionKey)]];
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/transfer?session_key=%@",
+		[defaults stringForKey: @"BankServiceURL"], BankEscapeQueryParameter(sessionKey)]];
 
 	ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL: url];
 	//[request setPostValue: sessionKey forKey: @"session_key"];
@@ -186,8 +192,9 @@ BOOL BankTransferFunds(NSString* fromAccount, NSString* toAccount, NSString* amo
 
 NSString* _BankDownloadStatement(NSString* sessionKey, NSError** error, NSString** applicationError)
 {
-	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/statement?session_key=%@", kBankServiceURL,
-		BankEscapeQueryParameter(sessionKey)]];
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/statement?session_key=%@",
+		[defaults stringForKey: @"BankServiceURL"], BankEscapeQueryParameter(sessionKey)]];
 	
 	ASIHTTPRequest* request= [ASIHTTPRequest requestWithURL: url];
 	[request startSynchronous];
