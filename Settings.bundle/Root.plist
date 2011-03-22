@@ -14,7 +14,7 @@
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>ServerURL</string>
+			<string>BankServiceURL</string>
 			<key>KeyboardType</key>
 			<string>URL</string>
 			<key>Title</key>
