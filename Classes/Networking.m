@@ -3,6 +3,7 @@
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
 
+#import "Account.h"
 #import "SessionManager.h"
 #import "Constants.h"
 #import "Utilities.h"
@@ -106,7 +107,22 @@ NSArray* BankGetAccounts(NSError** error, NSString** applicationError)
 		accounts = _BankGetAccounts(sessionKey, error, applicationError);
 	}
 	
-	return accounts;
+	NSMutableArray* result = nil;
+	
+	if (accounts != nil)
+	{
+		result = [NSMutableArray array];
+	
+		for (NSDictionary* dict in accounts)
+		{
+			Account* account = [[[Account alloc] initWithNumber: [[dict objectForKey: @"account_number"] stringValue]
+				type: [dict objectForKey: @"type"] balance: [dict objectForKey: @"balance"]] autorelease];
+			[result addObject: account];
+		}
+	}
+	
+	
+	return result;
 }
 
 BOOL _BankTransferFunds(NSString* sessionKey, NSString* fromAccount, NSString* toAccount, NSString* amount, NSError** error, NSString** applicationError)

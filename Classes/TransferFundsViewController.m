@@ -1,5 +1,6 @@
 //  TransferFundsViewController.m
 
+#import "Account.h"
 #import "Networking.h"
 #import "Utilities.h"
 #import "TransferFundsViewController.h"
@@ -106,13 +107,13 @@
 				break;
 			}
 			case 1: {
-				NSDictionary* account = [_accounts objectAtIndex: _fromAccountIndex];
-				cell.textLabel.text = [NSString stringWithFormat: @"From: %@", [account objectForKey: @"type"]];
+				Account* account = [_accounts objectAtIndex: _fromAccountIndex];
+				cell.textLabel.text = [NSString stringWithFormat: @"From %@", account.name];
 				break;
 			}
 			case 2: {
-				NSDictionary* account = [_accounts objectAtIndex: _toAccountIndex];
-				cell.textLabel.text = [NSString stringWithFormat: @"To: %@", [account objectForKey: @"type"]];
+				Account* account = [_accounts objectAtIndex: _toAccountIndex];
+				cell.textLabel.text = [NSString stringWithFormat: @"To %@", account.name];
 				break;
 			}
 		}
@@ -187,11 +188,11 @@
 	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
 	UITextField* textField = (UITextField*) [cell viewWithTag: 1];
 
-	NSDictionary* fromAccount = [_accounts objectAtIndex: _fromAccountIndex];
-	NSDictionary* toAccount = [_accounts objectAtIndex: _toAccountIndex];
+	Account* fromAccount = [_accounts objectAtIndex: _fromAccountIndex];
+	Account* toAccount = [_accounts objectAtIndex: _toAccountIndex];
 	NSString* amount = textField.text;
 
-	if (BankTransferFunds([[fromAccount objectForKey: @"account_number"] description], [[toAccount objectForKey: @"account_number"] description], amount, &error, &applicationError) == NO) {
+	if (BankTransferFunds(fromAccount.number, toAccount.number, amount, &error, &applicationError) == NO) {
 		if (error != nil) {
 			BankDisplayErrorAlertView(error, nil);
 		}

@@ -1,5 +1,6 @@
 // SelectAccountViewController.m
 
+#import "Account.h"
 #import "SelectAccountViewController.h"
 
 @implementation SelectAccountViewController
@@ -50,8 +51,8 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	NSDictionary* account = [_accounts objectAtIndex: indexPath.row];
-    cell.textLabel.text = [account objectForKey: @"type"];
+	Account* account = [_accounts objectAtIndex: indexPath.row];
+    cell.textLabel.text = account.name;
     
     return cell;
 }

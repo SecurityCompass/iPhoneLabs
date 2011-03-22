@@ -1,5 +1,6 @@
 // AccountsViewController.m
 
+#import "Account.h"
 #import "AccountsViewController.h"
 #import "JSON.h"
 #import "SessionManager.h"
@@ -94,21 +95,21 @@
 
 	// Configure the cell for the account
 
-	NSDictionary* account = [_accounts objectAtIndex: indexPath.row];
+	Account* account = [_accounts objectAtIndex: indexPath.row];
 
 	UILabel* nameLabel = (UILabel*) [cell viewWithTag: 1];
 	if (nameLabel != nil) {
-		nameLabel.text = [account objectForKey: @"type"];
+		nameLabel.text = account.name;
 	}
 
 	UILabel* accountLabel = (UILabel*) [cell viewWithTag: 2];
 	if (accountLabel != nil) {
-		accountLabel.text = [[account objectForKey: @"account_number"] description];
+		accountLabel.text = account.number;
 	}
 
 	UILabel* balanceLabel = (UILabel*) [cell viewWithTag: 3];
 	if (balanceLabel != nil) {
-		balanceLabel.text = [account objectForKey: @"balance"];
+		balanceLabel.text = account.balance;
 	}
     
     return cell;
