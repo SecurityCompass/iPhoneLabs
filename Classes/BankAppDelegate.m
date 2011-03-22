@@ -9,8 +9,30 @@
 
 @synthesize window = _window;
 
-- (void) login
+- (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *)password
 {
+	// Store the username and password in the application's preferences
+	
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults setObject: password forKey: @"MasterPassword"];
+	[userDefaults setObject: _username forKey: @"Username"];
+	[userDefaults setObject: _password forKey: @"Password"];
+	[userDefaults synchronize];
+
+	[_username release];
+	_username = nil;
+	
+	[_password release];
+	_password = nil;
+	
+	// Replace the LoginViewController with the MenuViewController
+	
+	[_navigationController popViewControllerAnimated: NO];
+	
+	MenuViewController* menuViewController = [[MenuViewController new] autorelease];
+	if (menuViewController != nil) {
+		[_navigationController setViewControllers: [NSArray arrayWithObject: menuViewController]];
+	}
 }
 
 - (void) loginViewController:(LoginViewController *)loginViewController didFailWithError:(NSError *)error
@@ -25,48 +47,39 @@
 
 - (void) loginViewController:(LoginViewController *)loginViewController didSucceedWithUsername:(NSString *)username password:(NSString *)password sessionKey:(NSString *)sessionKey
 {
-	// Store the username and password in the application's preferences
+	SetupPasswordViewController* setupPasswordViewController = [[SetupPasswordViewController new] autorelease];
+	setupPasswordViewController.delegate = self;
+	[_navigationController setViewControllers: [NSArray arrayWithObject: setupPasswordViewController] animated: NO];
 	
-	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	[userDefaults setObject: _masterPassword forKey: @"MasterPassword"];
-	[userDefaults setObject: username forKey: @"Username"];
-	[userDefaults setObject: password forKey: @"Password"];
-	[userDefaults synchronize];
+	// Temporarily store the username and password. We store them in the preferences after the user has set a master password.
+	
+	[_username release];
+	_username = [username retain];
+	
+	[_password release];
+	_password = [password retain];
 	
 	// Store the session in our session manager
 
 	SessionManager* sessionManager = [SessionManager sharedSessionManager];
 	sessionManager.sessionKey = sessionKey;
-
-	// Replace the LoginViewController with the MenuViewController
-	
-	[_navigationController popViewControllerAnimated: NO];
-	
-	MenuViewController* menuViewController = [[MenuViewController new] autorelease];
-	if (menuViewController != nil) {
-		[_navigationController setViewControllers: [NSArray arrayWithObject: menuViewController]];
-	}
-}
-
-- (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *)password
-{
-	// Temporarily keep the master password around. We will not store it until the user has also logged in.
-
-	_masterPassword = [password retain];
-	
-	// Open the login dialog to let the user login to the web app. If that succeeds we store everything in
-	// the user's preferences.
-	
-	LoginViewController* loginViewController = [[LoginViewController new] autorelease];
-	loginViewController.delegate = self;
-	[_navigationController setViewControllers: [NSArray arrayWithObject: loginViewController]];	
 }
 
 - (void) setupApplication
 {
-	SetupPasswordViewController* setupPasswordViewController = [[SetupPasswordViewController new] autorelease];
-	setupPasswordViewController.delegate = self;
-	[_navigationController setViewControllers: [NSArray arrayWithObject: setupPasswordViewController] animated: NO];
+	// In case we were in the middle of logging in, kill the saved credentials
+
+	[_username release];
+	_username = nil;
+	
+	[_password release];
+	_password = nil;
+
+	// Show the login screen
+
+	LoginViewController* loginViewController = [[LoginViewController new] autorelease];
+	loginViewController.delegate = self;
+	[_navigationController setViewControllers: [NSArray arrayWithObject: loginViewController]];	
 }
 
 #pragma mark -
@@ -129,6 +142,8 @@
 	if ([userDefaults objectForKey: @"MasterPassword"] != nil) {
 		[[SessionManager sharedSessionManager] invalidate];
 		[self unlockApplication];
+	} else {
+		[self setupApplication];
 	}
 }
 

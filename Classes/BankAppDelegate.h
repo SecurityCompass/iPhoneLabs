@@ -10,11 +10,10 @@
     UIWindow* _window;
 	UINavigationController* _navigationController;
   @private
-    NSString* _masterPassword;
+    NSString* _username;
+	NSString* _password;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
-- (void) login;
 
 @end
