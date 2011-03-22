@@ -403,6 +403,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Stefan Arentz (7G4JTLQL3V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Stefan Arentz (7G4JTLQL3V)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -410,6 +412,8 @@
 				GCC_PREFIX_HEADER = Bank_Prefix.pch;
 				INFOPLIST_FILE = "Bank-Info.plist";
 				PRODUCT_NAME = Bank;
+				PROVISIONING_PROFILE = "A8BD8D15-C611-483B-9957-3803A363CDE0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8BD8D15-C611-483B-9957-3803A363CDE0";
 			};
 			name = Debug;
 		};
