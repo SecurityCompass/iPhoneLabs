@@ -92,6 +92,12 @@
 			{
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+				
+				UILabel* label = [[[UILabel alloc] initWithFrame: CGRectMake(180, 9, 100, 24)] autorelease];
+				label.font = [UIFont boldSystemFontOfSize: 17.0];
+				label.textAlignment = UITextAlignmentRight;
+				label.tag = 1;
+				[cell addSubview: label];
 			}
 		}
 	}
@@ -108,12 +114,16 @@
 			}
 			case 1: {
 				Account* account = [_accounts objectAtIndex: _fromAccountIndex];
-				cell.textLabel.text = [NSString stringWithFormat: @"From %@", account.name];
+				cell.textLabel.text = [NSString stringWithFormat: @"From %@ (%@)", account.name, [account.number substringFromIndex: 5]];
+				UILabel* balanceLabel = (UILabel*) [cell viewWithTag: 1];
+				balanceLabel.text = [NSString stringWithFormat: @"$%@", account.balance];
 				break;
 			}
 			case 2: {
 				Account* account = [_accounts objectAtIndex: _toAccountIndex];
-				cell.textLabel.text = [NSString stringWithFormat: @"To %@", account.name];
+				cell.textLabel.text = [NSString stringWithFormat: @"To %@ (%@)", account.name, [account.number substringFromIndex: 5]];
+				UILabel* balanceLabel = (UILabel*) [cell viewWithTag: 1];
+				balanceLabel.text = [NSString stringWithFormat: @"$%@", account.balance];
 				break;
 			}
 		}

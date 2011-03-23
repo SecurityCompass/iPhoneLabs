@@ -49,10 +49,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		UILabel* label = [[[UILabel alloc] initWithFrame: CGRectMake(180, 9, 100, 24)] autorelease];
+		label.font = [UIFont boldSystemFontOfSize: 17.0];
+		label.textAlignment = UITextAlignmentRight;
+		label.tag = 1;
+		[cell addSubview: label];
     }
     
 	Account* account = [_accounts objectAtIndex: indexPath.row];
-    cell.textLabel.text = account.name;
+
+    cell.textLabel.text = [NSString stringWithFormat: @"%@ (%@)", account.name, [account.number substringFromIndex: 5]];
+
+	UILabel* balanceLabel = (UILabel*) [cell viewWithTag: 1];
+	balanceLabel.text = [NSString stringWithFormat: @"$%@", account.balance];
     
     return cell;
 }
