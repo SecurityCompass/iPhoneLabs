@@ -147,6 +147,10 @@
 		}
 	}
 	
+	// Reset the session
+	
+	[[SessionManager sharedSessionManager] invalidate];
+	
 	[self setupApplication];
 }
 
