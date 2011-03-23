@@ -23,6 +23,7 @@
 		F85DB1C613293D92001FF0A2 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = F85DB1C513293D92001FF0A2 /* Networking.m */; };
 		F863A587132970030040E7AC /* StatementDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F863A585132970030040E7AC /* StatementDetailViewController.m */; };
 		F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F863A586132970030040E7AC /* StatementDetailViewController.xib */; };
+		F88C3254133A396E002402BD /* Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = F88C3253133A396E002402BD /* Crypto.m */; };
 		F89CC0F31327E9FE00E89173 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */; };
 		F89CC0F41327E9FE00E89173 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E31327E9FE00E89173 /* ASIDataCompressor.m */; };
 		F89CC0F51327E9FE00E89173 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC0E51327E9FE00E89173 /* ASIDataDecompressor.m */; };
@@ -50,6 +51,7 @@
 		F89CC2B513282CC500E89173 /* CheckPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC2B313282CC500E89173 /* CheckPasswordViewController.m */; };
 		F89CC2B613282CC500E89173 /* CheckPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F89CC2B413282CC500E89173 /* CheckPasswordViewController.xib */; };
 		F89CC3EE13284F6700E89173 /* TransferFundsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89CC3EC13284F6700E89173 /* TransferFundsViewController.m */; };
+		F8E07CAC133A7030002B4500 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E07CAB133A7030002B4500 /* libcrypto.a */; };
 		F8EAD4E81326772600657690 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EAD4E61326772600657690 /* LoginViewController.m */; };
 		F8EAD4E91326772600657690 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8EAD4E71326772600657690 /* LoginViewController.xib */; };
 		F8EAD50213268D4400657690 /* AccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8EAD50113268D4400657690 /* AccountsViewController.m */; };
@@ -84,6 +86,8 @@
 		F863A584132970030040E7AC /* StatementDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatementDetailViewController.h; sourceTree = "<group>"; };
 		F863A585132970030040E7AC /* StatementDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatementDetailViewController.m; sourceTree = "<group>"; };
 		F863A586132970030040E7AC /* StatementDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatementDetailViewController.xib; sourceTree = "<group>"; };
+		F88C3252133A396E002402BD /* Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crypto.h; sourceTree = "<group>"; };
+		F88C3253133A396E002402BD /* Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Crypto.m; sourceTree = "<group>"; };
 		F89CC0DF1327E9FE00E89173 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.h"; sourceTree = "<group>"; };
 		F89CC0E01327E9FE00E89173 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASIAuthenticationDialog.m"; sourceTree = "<group>"; };
 		F89CC0E11327E9FE00E89173 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = "ThirdPartyCode/asi-http-request-1.8/Classes/ASICacheDelegate.h"; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 		F89CC2B413282CC500E89173 /* CheckPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckPasswordViewController.xib; sourceTree = "<group>"; };
 		F89CC3EB13284F6700E89173 /* TransferFundsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferFundsViewController.h; sourceTree = "<group>"; };
 		F89CC3EC13284F6700E89173 /* TransferFundsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferFundsViewController.m; sourceTree = "<group>"; };
+		F8E07CAB133A7030002B4500 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "ThirdPartyCode/ios-openssl/lib/libcrypto.a"; sourceTree = "<group>"; };
 		F8EAD4E51326772600657690 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F8EAD4E61326772600657690 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F8EAD4E71326772600657690 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 				F89CC1031327EA2C00E89173 /* MobileCoreServices.framework in Frameworks */,
 				F89CC1071327EA3100E89173 /* SystemConfiguration.framework in Frameworks */,
 				F89CC10B1327EA3800E89173 /* libz.dylib in Frameworks */,
+				F8E07CAC133A7030002B4500 /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +172,8 @@
 			children = (
 				F89CC1C41328073200E89173 /* Utilities.h */,
 				F89CC1C51328073200E89173 /* Utilities.m */,
+				F88C3252133A396E002402BD /* Crypto.h */,
+				F88C3253133A396E002402BD /* Crypto.m */,
 				F89CC269132817AF00E89173 /* Constants.h */,
 				F89CC26A132817AF00E89173 /* Constants.m */,
 				F85DB1C413293D92001FF0A2 /* Networking.h */,
@@ -217,6 +225,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				F8E07CAA133A701C002B4500 /* Libraries */,
 				F89CC0DB1327E9E900E89173 /* ThirdPartyCode */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -299,6 +308,14 @@
 				F89CC1601327F58300E89173 /* SBJsonWriter.m */,
 			);
 			name = ThirdPartyCode;
+			sourceTree = "<group>";
+		};
+		F8E07CAA133A701C002B4500 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				F8E07CAB133A7030002B4500 /* libcrypto.a */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +416,7 @@
 				F83F74D013382D6300B5F7CB /* Account.m in Sources */,
 				F83F74D71338430800B5F7CB /* NSString+SHA.m in Sources */,
 				F83F74E01338EE1000B5F7CB /* NSString+Random.m in Sources */,
+				F88C3254133A396E002402BD /* Crypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +434,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bank_Prefix.pch;
+				HEADER_SEARCH_PATHS = "ThirdPartyCode/ios-openssl/include";
 				INFOPLIST_FILE = "Bank-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdPartyCode/ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = Bank;
 				PROVISIONING_PROFILE = "A8BD8D15-C611-483B-9957-3803A363CDE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8BD8D15-C611-483B-9957-3803A363CDE0";
@@ -430,7 +453,12 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Bank_Prefix.pch;
+				HEADER_SEARCH_PATHS = "ThirdPartyCode/ios-openssl/include";
 				INFOPLIST_FILE = "Bank-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdPartyCode/ios-openssl/lib\"",
+				);
 				PRODUCT_NAME = Bank;
 				VALIDATE_PRODUCT = YES;
 			};

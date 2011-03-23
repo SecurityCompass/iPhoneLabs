@@ -5,6 +5,8 @@
 #import "BankAppDelegate.h"
 #import "SessionManager.h"
 #import "MenuViewController.h"
+
+#import "Crypto.h"
 #import "Constants.h"
 #import "Utilities.h"
 
@@ -17,12 +19,12 @@
 	// Store the username and password in the application's preferences. We also store the password as a
 	// SHA256 hashed value.
 	
-	NSMutableString* salt = [NSString randomStringWithLength: 32];
-	NSData* hashedMasterPassword = [[salt stringByAppendingString: password] SHA256Hash];
+	NSData* hashedLocalPasswordSalt = BankGenerateRandomSalt(32);
+	NSData* hashedLocalPassword = BankHashLocalPassword(password, hashedLocalPasswordSalt);
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	[userDefaults setObject: hashedMasterPassword forKey: @"MasterPassword"];
-	[userDefaults setObject: salt forKey: @"MasterPasswordSalt"];
+	[userDefaults setObject: hashedLocalPassword forKey: @"LocalPassword"];
+	[userDefaults setObject: hashedLocalPasswordSalt forKey: @"LocalPasswordSalt"];
 	[userDefaults setObject: _username forKey: @"Username"];
 	[userDefaults setObject: _password forKey: @"Password"];
 	[userDefaults synchronize];
@@ -95,13 +97,12 @@
 - (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *)password
 {
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	NSData* correctHashedLocalPasswordSalt = [userDefaults objectForKey: @"LocalPasswordSalt"];
+	NSData* correctHashedLocalPassword = [userDefaults objectForKey: @"LocalPassword"];
 
-	NSString* salt = [userDefaults objectForKey: @"MasterPasswordSalt"];
-	NSData* hashedPassword = [[salt stringByAppendingString: password] SHA256Hash];
+	NSData* hashedPassword = BankHashLocalPassword(password, correctHashedLocalPasswordSalt);
 
-	NSData* correctHashedMasterPassword = [userDefaults objectForKey: @"MasterPassword"];
-
-	if ([hashedPassword isEqualToData: correctHashedMasterPassword])
+	if ([hashedPassword isEqualToData: correctHashedLocalPassword])
 	{
 		MenuViewController* menuViewController = [[MenuViewController new] autorelease];
 		if (menuViewController != nil) {
