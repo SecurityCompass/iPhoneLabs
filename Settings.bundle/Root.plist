@@ -10,7 +10,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>http://localhost:8080</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
