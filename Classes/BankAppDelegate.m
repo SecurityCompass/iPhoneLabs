@@ -159,7 +159,6 @@
 
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	if ([userDefaults objectForKey: @"LocalPassword"] != nil) {
-		[[SessionManager sharedSessionManager] invalidate];
 		[self unlockApplication];
 	} else {
 		[self setupApplication];
