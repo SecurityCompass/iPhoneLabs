@@ -143,7 +143,7 @@
 	// means that the user has also logged in to the web application and that we have his credentials)
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults objectForKey: @"MasterPassword"] == nil) {	
+	if ([userDefaults objectForKey: @"LocalPassword"] == nil) {	
 		[self setupApplication];
 	} else {
 		[self unlockApplication];
@@ -158,7 +158,7 @@
 	// the app was configured with both bank account info and internal password.
 
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults objectForKey: @"MasterPassword"] != nil) {
+	if ([userDefaults objectForKey: @"LocalPassword"] != nil) {
 		[[SessionManager sharedSessionManager] invalidate];
 		[self unlockApplication];
 	} else {
