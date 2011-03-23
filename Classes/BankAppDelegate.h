@@ -4,8 +4,9 @@
 #import "LoginViewController.h"
 #import "CheckPasswordViewController.h"
 #import "SetupPasswordViewController.h"
+#import "MenuViewController.h"
 
-@interface BankAppDelegate : NSObject <UIApplicationDelegate, LoginViewControllerDelegate, CheckPasswordViewControllerDelegate, SetupPasswordViewControllerDelegate> {
+@interface BankAppDelegate : NSObject <UIApplicationDelegate, LoginViewControllerDelegate, CheckPasswordViewControllerDelegate, SetupPasswordViewControllerDelegate, MenuViewControllerDelegate> {
   @private
     UIWindow* _window;
 	UINavigationController* _navigationController;

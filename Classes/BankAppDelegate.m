@@ -41,6 +41,7 @@
 	
 	MenuViewController* menuViewController = [[MenuViewController new] autorelease];
 	if (menuViewController != nil) {
+		menuViewController.delegate = self;
 		[_navigationController setViewControllers: [NSArray arrayWithObject: menuViewController]];
 	}
 }
@@ -106,6 +107,7 @@
 	{
 		MenuViewController* menuViewController = [[MenuViewController new] autorelease];
 		if (menuViewController != nil) {
+			menuViewController.delegate = self;
 			[_navigationController setViewControllers: [NSArray arrayWithObject: menuViewController]];
 		}
 		return YES;
@@ -118,6 +120,34 @@
 	CheckPasswordViewController* checkPasswordViewController = [[CheckPasswordViewController new] autorelease];
 	checkPasswordViewController.delegate = self;
 	[_navigationController setViewControllers: [NSArray arrayWithObject: checkPasswordViewController] animated: NO];
+}
+
+#pragma mark -
+
+- (void) menuViewControllerDidAskToResetApplication:(MenuViewController *)menuViewController
+{
+	// Delete all user preference
+
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	[userDefaults removeObjectForKey: @"LocalPassword"];
+	[userDefaults removeObjectForKey: @"LocalPasswordSalt"];
+	[userDefaults removeObjectForKey: @"Username"];
+	[userDefaults removeObjectForKey: @"Password"];
+	[userDefaults synchronize];
+	
+	// Delete all statement files from the ~/Documents directory
+	
+	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
+	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: documentsDirectory error: nil];
+	
+	for (NSString* file in files) {
+		if ([[file pathExtension] isEqualToString: @"statement"]) {
+			NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
+			[[NSFileManager defaultManager] removeItemAtPath: path error: NULL];
+		}
+	}
+	
+	[self setupApplication];
 }
 
 #pragma mark -
