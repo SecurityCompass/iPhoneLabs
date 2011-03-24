@@ -1,5 +1,6 @@
 //  SetupPasswordViewController.m
 
+#import "Crypto.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SetupPasswordViewController.h"
 
@@ -50,7 +51,13 @@
 
 - (IBAction) done
 {
-	[_delegate setupPasswordViewController: self didSetupPassword: _password1TextField.text];
+	if (BankCheckPasswordStrength(_password1TextField.text)) {
+		[_delegate setupPasswordViewController: self didSetupPassword: _password1TextField.text];
+	} else {
+		UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle: @"Password Problem" message: @"The supplied password is too weak. Use a password longer than N characters that has at least some numbers and letters in it."
+			delegate: nil cancelButtonTitle: @"OK" otherButtonTitles: nil] autorelease];
+		[alertView show];
+	}
 }
 
 /**
@@ -68,7 +75,7 @@
 	
 	if (textField == _password2TextField) {
 		if ([_password1TextField.text isEqualToString: _password2TextField.text]) {
-			[_delegate setupPasswordViewController: self didSetupPassword: _password1TextField.text];
+			[self done];
 			return YES;
 		}
 	}
