@@ -5,3 +5,9 @@
  */
 
 NSString* kDefaultBankServiceURL = @"http://localhost:8080";
+
+/**
+ * The key with which we encrypt the username, password and statements.
+ */
+ 
+NSString* kSecretEncryptionKey = @"SECRETKEYFORENCRYPTINGTHEPASSWRD";
