@@ -7,5 +7,5 @@ NSData* BankGenerateRandomIV();
 
 NSData* BankHashLocalPassword(NSString* password, NSData* salt);
 
-NSData* BankEncryptString(NSString* string, NSData* key, NSData* iv);
-NSData* BankDecryptString(NSString* string, NSData* key, NSData* iv);
+NSData* BankEncryptString(NSString* plaintext, NSData* key, NSData* iv);
+NSString* BankDecryptString(NSData* ciphertext, NSData* key, NSData* iv);

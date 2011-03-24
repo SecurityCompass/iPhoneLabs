@@ -1,5 +1,7 @@
 //  Crypto.m
 
+#include <CommonCrypto/CommonCryptor.h>
+
 #include <openssl/evp.h>
 #include <openssl/rand.h>
 
@@ -86,12 +88,74 @@ NSData* BankHashLocalPassword(NSString* password, NSData* salt)
 	return data;
 }
 
-NSData* BankEncryptString(NSString* string, NSData* key, NSData* iv)
+NSData* BankEncryptString(NSString* plaintext, NSData* key, NSData* iv)
 {
-	return nil;
+	NSData* result = nil;
+
+	NSData* plaintextData = [plaintext dataUsingEncoding: NSUTF8StringEncoding];
+
+	size_t bufferSize = [plaintextData length] + [key length];
+
+	void *buffer = calloc(bufferSize, sizeof(uint8_t));
+	if (buffer != nil)
+	{
+		size_t dataOutMoved = 0;
+
+		CCCryptorStatus cryptStatus = CCCrypt(
+			kCCEncrypt,
+			kCCAlgorithmAES128,
+			kCCOptionPKCS7Padding,
+			[key bytes],
+			kCCKeySizeAES256,
+			[iv bytes],
+			[plaintextData bytes],
+			[plaintextData length],
+			buffer,
+			bufferSize,
+			&dataOutMoved
+		);
+
+		if (cryptStatus == kCCSuccess) {
+			result = [NSData dataWithBytesNoCopy: buffer length: dataOutMoved freeWhenDone: YES];
+		} else {
+			free(buffer);
+		}
+	}
+
+	return result;
 }
 
-NSData* BankDecryptString(NSString* string, NSData* key, NSData* iv)
+NSString* BankDecryptString(NSData* ciphertext, NSData* key, NSData* iv)
 {
-	return nil;
+	NSString* result = nil;
+
+	size_t bufferSize = [ciphertext length];
+
+	void *buffer = calloc(bufferSize, sizeof(uint8_t));
+	if (buffer != nil)
+	{
+		size_t dataOutMoved = 0;
+
+		CCCryptorStatus cryptStatus = CCCrypt(
+			kCCDecrypt,
+			kCCAlgorithmAES128,
+			kCCOptionPKCS7Padding,
+			[key bytes],
+			kCCKeySizeAES256,
+			[iv bytes],
+			[ciphertext bytes],
+			[ciphertext length],
+			buffer,
+			bufferSize,
+			&dataOutMoved
+		);
+
+		if (cryptStatus == kCCSuccess) {
+			result = [[NSString alloc] initWithBytesNoCopy: buffer length: dataOutMoved encoding: NSUTF8StringEncoding freeWhenDone: YES];
+		} else {
+			free(buffer);
+		}
+	}
+
+	return result;
 }
