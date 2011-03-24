@@ -14,19 +14,27 @@
 
 @synthesize window = _window;
 
-- (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *)password
+- (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *) localPassword
 {
-	// Store the username and password in the application's preferences. We also store the password as a
-	// SHA256 hashed value.
+	// Store the username and password in the application's preferences. These are encrypted using AES256. We
+	// also store the password as a SHA256 hashed value.
 	
 	NSData* hashedLocalPasswordSalt = BankGenerateRandomSalt(32);
-	NSData* hashedLocalPassword = BankHashLocalPassword(password, hashedLocalPasswordSalt);
+	NSData* hashedLocalPassword = BankHashLocalPassword(localPassword, hashedLocalPasswordSalt);
+	
+	NSData* encryptedUsernameIV = BankGenerateRandomIV();
+	NSData* encryptedUsername = BankEncryptString(_username, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedUsernameIV);
+
+	NSData* encryptedPasswordIV = BankGenerateRandomIV();
+	NSData* encryptedPassword = BankEncryptString(_password, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedPasswordIV);
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject: hashedLocalPassword forKey: @"LocalPassword"];
 	[userDefaults setObject: hashedLocalPasswordSalt forKey: @"LocalPasswordSalt"];
-	[userDefaults setObject: _username forKey: @"Username"];
-	[userDefaults setObject: _password forKey: @"Password"];
+	[userDefaults setObject: encryptedUsername forKey: @"Username"];
+	[userDefaults setObject: encryptedUsernameIV forKey: @"UsernameIV"];
+	[userDefaults setObject: encryptedPassword forKey: @"Password"];
+	[userDefaults setObject: encryptedPasswordIV forKey: @"PasswordIV"];
 	[userDefaults synchronize];
 
 	[_username release];
