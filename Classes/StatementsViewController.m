@@ -1,6 +1,8 @@
 // StatementsViewController.m
 
+#import "Constants.h"
 #import "Networking.h"
+#import "Crypto.h"
 #import "StatementDetailViewController.h"
 #import "StatementsViewController.h"
 
@@ -8,11 +10,20 @@
 
 - (void) saveStatement: (NSString*) statement
 {
+	// Encrypt the statement with the secret key
+	
+	NSData* encryptedStatementIV = BankGenerateRandomIV();
+	NSData* encryptedStatement = BankEncryptString(statement, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedStatementIV);
+
+	// Write the statement and iv to separate files
+
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
-	NSString* path = [[documentsDirectory stringByAppendingPathComponent:
-		[NSString stringWithFormat: @"%u", (unsigned long) [[NSDate date] timeIntervalSince1970]]]
-			stringByAppendingPathExtension: @"statement"];
-	[statement writeToFile: path atomically: YES encoding: NSUTF8StringEncoding error: nil];
+
+	NSString* file = [NSString stringWithFormat: @"%u", (unsigned long) [[NSDate date] timeIntervalSince1970]];
+	NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
+	
+	[encryptedStatement writeToFile: [path stringByAppendingPathExtension: @"statement"] atomically: YES];
+	[encryptedStatementIV writeToFile: [path stringByAppendingPathExtension: @"iv"] atomically: YES];
 }
 
 - (void) scanStatements
@@ -115,7 +126,8 @@
 
 - (void) tableView: (UITableView*) tableView didSelectRowAtIndexPath: (NSIndexPath*) indexPath
 {
-	StatementDetailViewController* vc= [[[StatementDetailViewController alloc] initWithStatementName: [_statements objectAtIndex: indexPath.row]] autorelease];
+	NSString* name = [[_statements objectAtIndex: indexPath.row] stringByDeletingPathExtension];	
+	StatementDetailViewController* vc = [[[StatementDetailViewController alloc] initWithStatementName: name] autorelease];
 	[self.navigationController pushViewController: vc animated: YES];
 }
 

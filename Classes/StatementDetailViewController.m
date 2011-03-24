@@ -1,5 +1,7 @@
 //  StatementDetailViewController.m
 
+#import "Constants.h"
+#import "Crypto.h"
 #import "StatementDetailViewController.h"
 
 @implementation StatementDetailViewController
@@ -24,14 +26,25 @@
 
 - (void) viewDidLoad
 {
+	// Disable data detectors otherwise bank account numbers are recognized as phone numbers
+
 	_webView.dataDetectorTypes = UIDataDetectorTypeNone;
 
+	// Decrypt the statement and iv
+
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
-	NSString* statementPath = [documentsDirectory stringByAppendingPathComponent: _statementName];
+	NSString* path = [documentsDirectory stringByAppendingPathComponent: _statementName];
 	
-	if ([[NSFileManager defaultManager] fileExistsAtPath: statementPath]) {
-		NSString* content = [NSString stringWithContentsOfFile: statementPath encoding: NSUTF8StringEncoding error: nil];
-		[_webView loadHTMLString: content baseURL: nil];
+	NSData* encryptedStatement = [NSData dataWithContentsOfFile: [path stringByAppendingPathExtension: @"statement"]];
+	NSData* encryptedStatementIV = [NSData dataWithContentsOfFile: [path stringByAppendingPathExtension: @"iv"]];
+	
+	if (encryptedStatement != nil && encryptedStatementIV != nil) {
+		NSString* content = BankDecryptString(encryptedStatement, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedStatementIV);
+		if (content != nil) {	
+			[_webView loadHTMLString: content baseURL: nil];
+		} else {
+			[_webView loadHTMLString: @"Decryption failure" baseURL: nil];
+		}
 	} else {
 		[_webView loadHTMLString: @"Not found" baseURL: nil];
 	}
