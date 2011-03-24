@@ -186,8 +186,6 @@ BOOL _BankTransferFunds(NSString* sessionKey, NSString* fromAccount, NSString* t
 
 BOOL BankTransferFunds(NSString* fromAccount, NSString* toAccount, NSString* amount, NSError** error, NSString** applicationError)
 {
-	NSLog(@"Transferring %@ from %@ to %@", amount, fromAccount, toAccount);
-
 	*error = nil;
 	*applicationError = nil;
 
