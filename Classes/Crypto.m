@@ -159,3 +159,27 @@ NSString* BankDecryptString(NSData* ciphertext, NSData* key, NSData* iv)
 
 	return result;
 }
+
+/**
+ * Derive a 256 encryption key from the local password using the 
+ */
+
+NSData* BankDeriveEncryptionKey(NSString* password, NSString* salt)
+{
+	unsigned char final[32];
+
+	const char* passphraseString = [password UTF8String];
+	const char* saltString = [salt UTF8String];
+
+	PKCS5_PBKDF2_HMAC_SHA1(
+		passphraseString,
+		-1,
+		(void*) saltString,
+		strlen(saltString),
+		4096,
+		32,
+		final
+	);
+	
+	return [NSData dataWithBytes: final length: 32];
+}
