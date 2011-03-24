@@ -16,17 +16,22 @@
 
 - (void) setupPasswordViewController:(SetupPasswordViewController *)vc didSetupPassword:(NSString *) localPassword
 {
-	// Store the username and password in the application's preferences. These are encrypted using AES256. We
-	// also store the password as a SHA256 hashed value.
+	// Derive the encryption key from the local password and store it in the session
+
+	NSData* derivedEncryptionKey = BankDeriveEncryptionKey(localPassword, @"salt");
+	[[SessionManager sharedSessionManager] setEncryptionKey: derivedEncryptionKey];
+	
+	// Store the username and password in the application's preferences. These are encrypted using AES256 with a
+	// key that is derived from the local password. We also store the master password as a SHA256 hashed value.
 	
 	NSData* hashedLocalPasswordSalt = BankGenerateRandomSalt(32);
 	NSData* hashedLocalPassword = BankHashLocalPassword(localPassword, hashedLocalPasswordSalt);
 	
 	NSData* encryptedUsernameIV = BankGenerateRandomIV();
-	NSData* encryptedUsername = BankEncryptString(_username, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedUsernameIV);
+	NSData* encryptedUsername = BankEncryptString(_username, derivedEncryptionKey, encryptedUsernameIV);
 
 	NSData* encryptedPasswordIV = BankGenerateRandomIV();
-	NSData* encryptedPassword = BankEncryptString(_password, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedPasswordIV);
+	NSData* encryptedPassword = BankEncryptString(_password, derivedEncryptionKey, encryptedPasswordIV);
 	
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	[userDefaults setObject: hashedLocalPassword forKey: @"LocalPassword"];
@@ -103,16 +108,23 @@
 
 #pragma mark -
 
-- (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *)password
+- (BOOL) checkPasswordViewController:(CheckPasswordViewController *)vc didEnterPassword:(NSString *) localPassword
 {
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	NSData* correctHashedLocalPasswordSalt = [userDefaults objectForKey: @"LocalPasswordSalt"];
 	NSData* correctHashedLocalPassword = [userDefaults objectForKey: @"LocalPassword"];
 
-	NSData* hashedPassword = BankHashLocalPassword(password, correctHashedLocalPasswordSalt);
+	NSData* hashedPassword = BankHashLocalPassword(localPassword, correctHashedLocalPasswordSalt);
 
 	if ([hashedPassword isEqualToData: correctHashedLocalPassword])
 	{
+		// Derive the encryption key from the local password and store it in the session
+
+		NSData* derivedEncryptionKey = BankDeriveEncryptionKey(localPassword, @"salt");
+		[[SessionManager sharedSessionManager] setEncryptionKey: derivedEncryptionKey];
+	
+		// Show the main menu
+	
 		MenuViewController* menuViewController = [[MenuViewController new] autorelease];
 		if (menuViewController != nil) {
 			menuViewController.delegate = self;

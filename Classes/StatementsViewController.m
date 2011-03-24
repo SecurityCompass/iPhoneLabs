@@ -3,6 +3,7 @@
 #import "Constants.h"
 #import "Networking.h"
 #import "Crypto.h"
+#import "SessionManager.h"
 #import "StatementDetailViewController.h"
 #import "StatementsViewController.h"
 
@@ -13,7 +14,7 @@
 	// Encrypt the statement with the secret key
 	
 	NSData* encryptedStatementIV = BankGenerateRandomIV();
-	NSData* encryptedStatement = BankEncryptString(statement, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedStatementIV);
+	NSData* encryptedStatement = BankEncryptString(statement, [[SessionManager sharedSessionManager] encryptionKey], encryptedStatementIV);
 
 	// Write the statement and iv to separate files
 

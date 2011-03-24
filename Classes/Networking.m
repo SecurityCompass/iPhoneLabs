@@ -55,13 +55,13 @@ static NSString* _BankRefreshSession(BOOL force, NSError** error, NSString** app
 		
 		NSString* username = BankDecryptString(
 			[defaults objectForKey: @"Username"],
-			[kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding],
+			[[SessionManager sharedSessionManager] encryptionKey],
 			[defaults objectForKey: @"UsernameIV"]
 		);
 
 		NSString* password = BankDecryptString(
 			[defaults objectForKey: @"Password"],
-			[kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding],
+			[[SessionManager sharedSessionManager] encryptionKey],
 			[defaults objectForKey: @"PasswordIV"]
 		);
 		

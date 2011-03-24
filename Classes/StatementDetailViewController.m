@@ -2,6 +2,7 @@
 
 #import "Constants.h"
 #import "Crypto.h"
+#import "SessionManager.h"
 #import "StatementDetailViewController.h"
 
 @implementation StatementDetailViewController
@@ -39,7 +40,7 @@
 	NSData* encryptedStatementIV = [NSData dataWithContentsOfFile: [path stringByAppendingPathExtension: @"iv"]];
 	
 	if (encryptedStatement != nil && encryptedStatementIV != nil) {
-		NSString* content = BankDecryptString(encryptedStatement, [kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding], encryptedStatementIV);
+		NSString* content = BankDecryptString(encryptedStatement, [[SessionManager sharedSessionManager] encryptionKey], encryptedStatementIV);
 		if (content != nil) {	
 			[_webView loadHTMLString: content baseURL: nil];
 		} else {
