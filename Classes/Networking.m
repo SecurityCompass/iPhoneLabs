@@ -8,6 +8,7 @@
 #import "Constants.h"
 #import "Utilities.h"
 #import "Networking.h"
+#import "Crypto.h"
 
 /**
  * Login to the bank service. Returns the session key on success. On failure it returns nil and sets
@@ -23,8 +24,8 @@ NSString* BankLogin(NSString* username, NSString* password, NSError** error, NSS
 	NSURL* url = [NSURL URLWithString: [NSString stringWithFormat: @"%@/login", [defaults valueForKey: @"BankServiceURL"]]];
 
 	ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL: url];
-	[request setPostValue: [[NSUserDefaults standardUserDefaults] objectForKey: @"Username"] forKey: @"username"];
-	[request setPostValue: [[NSUserDefaults standardUserDefaults] objectForKey: @"Password"] forKey: @"password"];
+	[request setPostValue: username forKey: @"username"];
+	[request setPostValue: password forKey: @"password"];
 	[request startSynchronous];
 	
 	if (request.error != nil) {
@@ -48,8 +49,29 @@ static NSString* _BankRefreshSession(BOOL force, NSError** error, NSString** app
 	NSString* sessionKey = [[SessionManager sharedSessionManager] sessionKey];
 	if (force == YES || sessionKey == nil)
 	{
+		// Decrypt the stored username and password with the secret key
+	
 		NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-		sessionKey = BankLogin([defaults objectForKey: @"Username"], [defaults objectForKey: @"Password"], error, applicationError);
+		
+		NSString* username = BankDecryptString(
+			[defaults objectForKey: @"Username"],
+			[kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding],
+			[defaults objectForKey: @"UsernameIV"]
+		);
+
+		NSString* password = BankDecryptString(
+			[defaults objectForKey: @"Password"],
+			[kSecretEncryptionKey dataUsingEncoding: NSUTF8StringEncoding],
+			[defaults objectForKey: @"PasswordIV"]
+		);
+		
+		if (username == nil || password == nil) {
+			return nil;
+		}
+		
+		// Login to the bank so that we get a new session
+		
+		sessionKey = BankLogin(username, password, error, applicationError);
 		if (sessionKey == nil) {
 			return nil;
 		}
