@@ -183,3 +183,12 @@ NSData* BankDeriveEncryptionKey(NSString* password, NSString* salt)
 	
 	return [NSData dataWithBytes: final length: 32];
 }
+
+/**
+ * Check the strengt of the specified password. Returns false if it is too weak.
+ */
+
+bool BankCheckPasswordStrength(NSString* password)
+{
+	return [password length] > 3;
+}
