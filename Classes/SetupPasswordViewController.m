@@ -54,7 +54,7 @@
 	if (BankCheckPasswordStrength(_password1TextField.text)) {
 		[_delegate setupPasswordViewController: self didSetupPassword: _password1TextField.text];
 	} else {
-		UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle: @"Password Problem" message: @"The supplied password is too weak. Use a password longer than N characters that has at least some numbers and letters in it."
+		UIAlertView* alertView = [[[UIAlertView alloc] initWithTitle: @"Password Problem" message: @"The supplied password is too weak. It must contain at least one one lower case letter, one upper case letter, one digit and one special character."
 			delegate: nil cancelButtonTitle: @"OK" otherButtonTitles: nil] autorelease];
 		[alertView show];
 	}
