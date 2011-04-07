@@ -78,7 +78,7 @@
 				textField.tag = 1;
 				textField.placeholder = @"Transfer Amount";
 				textField.font = [UIFont systemFontOfSize: 18.0];
-				textField.keyboardType = UIKeyboardTypeDefault;
+				textField.keyboardType = UIKeyboardTypeDecimalPad;
 				[textField addTarget: self action: @selector(updateTransferButton:) forControlEvents: UIControlEventEditingChanged];	
 				[cell addSubview: textField];
 			}
