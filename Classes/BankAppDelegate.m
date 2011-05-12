@@ -213,6 +213,9 @@
 
 	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	if ([userDefaults objectForKey: @"LocalPassword"] != nil) {
+		// Invalidate the session. This will release the stored password and crypto key.
+		[[SessionManager sharedSessionManager] invalidate];
+		// Go to the screen that asks for the password
 		[self unlockApplication];
 	} else {
 		[self setupApplication];
