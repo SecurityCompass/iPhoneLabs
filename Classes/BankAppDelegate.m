@@ -132,7 +132,7 @@
 
 #pragma mark -
 
-- (void) menuViewControllerDidAskToResetApplication:(MenuViewController *)menuViewController
+- (void) resetApplication
 {
 	// Delete all user preference
 
@@ -142,21 +142,25 @@
 	[userDefaults removeObjectForKey: @"Username"];
 	[userDefaults removeObjectForKey: @"Password"];
 	[userDefaults synchronize];
-	
+
 	// Delete all statement files from the ~/Documents directory
-	
+
 	NSString* documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
 	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: documentsDirectory error: nil];
-	
+
 	for (NSString* file in files) {
 		NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
 		[[NSFileManager defaultManager] removeItemAtPath: path error: NULL];
 	}
-	
+
 	// Reset the session
-	
+
 	[[SessionManager sharedSessionManager] invalidate];
-	
+}
+
+- (void) menuViewControllerDidAskToResetApplication:(MenuViewController *)menuViewController
+{
+	[self resetApplication];
 	[self setupApplication];
 }
 
@@ -166,9 +170,19 @@
 {
 	// Setup the defaults
 	
-	[[NSUserDefaults standardUserDefaults] registerDefaults:
-		[NSDictionary dictionaryWithObject: kDefaultBankServiceURL forKey: @"BankServiceURL"]];
+	NSMutableDictionary* initialDefaults = [NSMutableDictionary dictionary];
+	[initialDefaults setObject: kDefaultBankServiceURL forKey: @"BankServiceURL"];
+	[initialDefaults setObject: [NSNumber numberWithBool: NO] forKey: @"Reset"];
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults: initialDefaults];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+
+	// Check if we need to do a full reset
+	
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey: @"Reset"] == YES) {
+		[self resetApplication];
+	}
 
 	// The root of our application is a UINavigationViewController. We will push all views on it.
 	
@@ -182,7 +196,6 @@
 	// ask for the internal password and then enter the app. (We assume that having the internal password
 	// means that the user has also logged in to the web application and that we have his credentials)
 	
-	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
 	if ([userDefaults objectForKey: @"LocalPassword"] == nil) {	
 		[self setupApplication];
 	} else {
@@ -190,6 +203,17 @@
 	}
 
     return YES;
+}
+
+- (void) applicationWillEnterForeground:(UIApplication *)application
+{
+	// Check if we need to do a full reset
+	
+	NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults boolForKey: @"Reset"] == YES) {
+		[self resetApplication];
+		[self setupApplication];
+	}
 }
 
 - (void) applicationWillResignActive:(UIApplication *)application
