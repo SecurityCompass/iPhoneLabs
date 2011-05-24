@@ -141,10 +141,8 @@
 	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath: documentsDirectory error: nil];
 	
 	for (NSString* file in files) {
-		if ([[file pathExtension] isEqualToString: @"statement"]) {
-			NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
-			[[NSFileManager defaultManager] removeItemAtPath: path error: NULL];
-		}
+		NSString* path = [documentsDirectory stringByAppendingPathComponent: file];
+		[[NSFileManager defaultManager] removeItemAtPath: path error: NULL];
 	}
 	
 	// Reset the session
