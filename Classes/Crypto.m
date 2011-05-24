@@ -191,7 +191,7 @@ NSData* BankDeriveEncryptionKey(NSString* password, NSString* salt)
 bool BankCheckPasswordStrength(NSString* password)
 {
 	NSError* error = nil;
-	NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern: @"^.*(?=.{6,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$"
+	NSRegularExpression* re = [NSRegularExpression regularExpressionWithPattern: @"^.*(?=.{6,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).*$"
 		options: 0 error: &error];
 	if (error != nil) {
 		NSLog(@"Error: %@", [error localizedDescription]);
