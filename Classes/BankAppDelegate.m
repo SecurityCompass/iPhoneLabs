@@ -141,6 +141,7 @@
 	[userDefaults removeObjectForKey: @"LocalPasswordSalt"];
 	[userDefaults removeObjectForKey: @"Username"];
 	[userDefaults removeObjectForKey: @"Password"];
+	[userDefaults removeObjectForKey: @"Reset"];
 	[userDefaults synchronize];
 
 	// Delete all statement files from the ~/Documents directory
