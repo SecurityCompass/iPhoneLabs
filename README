@@ -1,5 +1,4 @@
-USING
-===================
+# USING
 
 Each branch contains the a different lab.
 
@@ -14,25 +13,24 @@ You will need to be running the server for this to work, information
 on how to run it is available in it's README.
 
 
-LAB DESCRIPTIONS
-=============================
+# LAB DESCRIPTIONS
  
- * Secure Connection
-  * Student observes sensitive traffic over a non-HTTPS connection
-  * Run wireshark to demonstrate this
-  * The solution involves running over https, can change this in the setting of the app, and there is a flag in the server to do this 
-  * Video exists (I think yuk fai has it)
- * Parameter manipulation
-  * Server does not validate input, student sends malicious input (negative money transfer)
-  * Video exists
- * Basic Encryption
-  * Sensitive data is stored unencrypted
-  * video exists
- * Advanced Encryption
-  * Sensitive data is stored encrypted using a pre-set key
-  * key is found by running strings on the binary or decompiling
- * Insecure Logging
-  * App logs sensitive data
-  * run adb logcat to see
- * Password Complexity
-  * App allows simple passwords
+* Secure Connection
+ * Student observes sensitive traffic over a non-HTTPS connection
+ * Run wireshark to demonstrate this
+ * The solution involves running over https, can change this in the setting of the app, and there is a flag in the server to do this 
+ * Video exists (I think yuk fai has it)
+* Parameter manipulation
+ * Server does not validate input, student sends malicious input (negative money transfer)
+ * Video exists
+* Basic Encryption
+ * Sensitive data is stored unencrypted
+ * video exists
+* Advanced Encryption
+ * Sensitive data is stored encrypted using a pre-set key
+ * key is found by running strings on the binary or decompiling
+* Insecure Logging
+ * App logs sensitive data
+ * run adb logcat to see
+* Password Complexity
+ * App allows simple passwords
