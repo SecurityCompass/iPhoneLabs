@@ -1,4 +1,5 @@
-# USING
+USING
+=====
 
 Each branch contains the a different lab.
 
@@ -13,7 +14,8 @@ You will need to be running the server for this to work, information
 on how to run it is available in it's README.
 
 
-# LAB DESCRIPTIONS
+LAB DESCRIPTIONS
+================
  
 * Secure Connection
  * Student observes sensitive traffic over a non-HTTPS connection
