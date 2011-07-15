@@ -61,7 +61,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* BankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* BankAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bank.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Base-iPhoneLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Base-iPhoneLabs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Bank.app */,
+				1D6058910D05DD3D006BFB54 /* Base-iPhoneLabs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Bank */ = {
+		1D6058900D05DD3D006BFB54 /* iPhoneLabs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Bank" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iPhoneLabs" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -333,9 +333,9 @@
 			);
 			dependencies = (
 			);
-			name = Bank;
+			name = iPhoneLabs;
 			productName = Bank;
-			productReference = 1D6058910D05DD3D006BFB54 /* Bank.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Base-iPhoneLabs.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -357,7 +357,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Bank */,
+				1D6058900D05DD3D006BFB54 /* iPhoneLabs */,
 			);
 		};
 /* End PBXProject section */
@@ -440,7 +440,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdPartyCode/ios-openssl/lib\"",
 				);
-				PRODUCT_NAME = Bank;
+				PRODUCT_NAME = "Base-iPhoneLabs";
 				PROVISIONING_PROFILE = "A8BD8D15-C611-483B-9957-3803A363CDE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A8BD8D15-C611-483B-9957-3803A363CDE0";
 			};
@@ -494,7 +494,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Bank" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iPhoneLabs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
