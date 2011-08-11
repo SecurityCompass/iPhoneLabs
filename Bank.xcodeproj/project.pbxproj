@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0791910713F391660034E74E /* sclogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0791910613F391660034E74E /* sclogo.png */; };
 		1D3623260D0F684500981E51 /* BankAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BankAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0791910613F391660034E74E /* sclogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sclogo.png; path = ../../Downloads/sclogo.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* BankAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* BankAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankAppDelegate.m; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0791910613F391660034E74E /* sclogo.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Bank-Info.plist */,
 				F89CC1C7132807FE00E89173 /* Errors.plist */,
@@ -374,6 +377,7 @@
 				F89CC2B613282CC500E89173 /* CheckPasswordViewController.xib in Resources */,
 				F863A588132970040040E7AC /* StatementDetailViewController.xib in Resources */,
 				F83F74D91338451400B5F7CB /* Settings.bundle in Resources */,
+				0791910713F391660034E74E /* sclogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
