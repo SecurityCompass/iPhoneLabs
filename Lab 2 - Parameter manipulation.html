@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 3.0.0 Beta 2 (166096)"/><meta name="created" content="2011-08-09 03:40:52 +0000"/><meta name="updated" content="2011-08-09 04:17:28 +0000"/><title>Lab 2 - Parameter manipulation</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+<b>Lab 2 - Parameter manipulation</b>
+<div><b><br/></b></div>
+<div>The parameter manipulation lab is contained within the bank transfer section.</div>
+<div><br/></div>
+<div>The purpose of this lab is to demonstrate that many common iPhone applications still rely on traditional web architectures or REST interfaces in the back end to perform their tasks.  Often, if you're able to trap the request, you can make the application or server act in ways it may not have felt possible.</div>
+<div><br/></div>
+<div>First, enter the bank money transfer screen within the ExploitMe Mobile app.</div>
+<div><b><br/></b></div>
+<div><b><br/></b></div>
+<div><img src="Lab%202%20-%20Parameter%20manipulation.resources/3bc5475933feef31c4c60b310b1b61e3.jpeg" height="704" width="354"/><br/></div>
+<div><br/></div>
+<div>There are a number of accounts preconfigured in EMM's default Lab server configuration.  We've logged in above using the jdoe account, but there are others including the following:</div>
+<div><br/></div>
+<div>jdoe / password</div>
+<div>bsmith / password</div>
+<div><br/></div>
+<div>The accounts are:</div>
+<div><br/></div>
+<div>123456789|debit</div>
+<div>987654321|credit</div>
+<div>111111111|debit</div>
+<div>22222222|credit</div>
+<div><br/></div>
+<div>In this lab, we'll try to transfer money between accounts on the server by intercepting the EMM app request.  Again, this traditionally isn't any different from web exploits, but most apps work in the same manner so it'll be good to see how it works on the mobile app space.</div>
+<div><br/></div>
+<div>Fill in the transfer screen and ensure your proxy is trapping the request.</div>
+<div><br/></div>
+<div><img src="Lab%202%20-%20Parameter%20manipulation.resources/1c7fe7c159974937e41bd8d8c55c5b08.jpeg" height="491" width="334"/><br/></div>
+<div><br/></div>
+<div><br/></div>
+<div>We'll transfer $50 between our accounts.  Hit the transfer button and trap the request.</div>
+<div><br/></div>
+<div><img src="Lab%202%20-%20Parameter%20manipulation.resources/817bf168cd9b884b8f63f9c84c8e6340.jpeg" height="273" width="576"/><br/></div>
+<div><br/></div>
+<div>You can see that the app is sending the request to the web server through a standard HTTP POSt.  Often with these mobile applications they will either be POSTs with a session key or a Web service XML request.</div>
+<div><br/></div>
+<div>We can now modify the "from_account" field to see if we can transfer from another account into our own!</div>
+<div><br/></div>
+<div><br/></div>
+<div><img src="Lab%202%20-%20Parameter%20manipulation.resources/663dead6171982ee09261f4f0ebc7dfb.jpeg" height="293" width="597"/><br/></div>
+<div><br/></div>
+<div><br/></div>
+<div>Notice that the from account is now from another user.</div>
+<div><br/></div>
+<div><br/></div>
+</body></html>

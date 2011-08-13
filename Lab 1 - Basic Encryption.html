@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 3.0.0 Beta 2 (166096)"/><meta name="created" content="2011-08-09 03:13:15 +0000"/><meta name="updated" content="2011-08-09 03:35:17 +0000"/><title>Lab 1 - Basic Encryption</title></head><body style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;">
+The first lab, we'll use a proxy server such as Charles to proxy the ExploitMe mobile request.  This guide assumes that you have configured your Xcode environment with ExploitMe Mobile for iPhone.  If not, please ensure you read the guide on set up first.
+<div><br/></div>
+<div>Let's now launch both the LabServer and ExploitMe Mobile in the iPhone simulator.  You should see a window like this.<br/></div>
+<div><br/></div>
+<div>In the first lab, we'll be inspecting iPhone network traffic to see how the app is sending bank traffic to LabServer.</div>
+<div><br/></div>
+<div>Launch your favourite proxy and ensure that MacOSX is set up to use the proxy server.  The iPhone simulator obey's the OSX settings for a proxy.  You can configure it in Preferences > Network &amp; Sharing > Proxies.</div>
+<div>
+<div><br/></div>
+<div>Ensure that your proxy is correctly accepting network traffic and then run the iPhone ExploitMe Mobile lab in the simulator.</div>
+<div><br/></div>
+<div>Once the simulator is running, login using the standard login and password jdoe/password for the user, or if you've already logged in before, enter your local password you configured on first run.</div>
+<div><br/></div>
+<div>Below you can see our network traffic from the iPhone EMM app to our lab server.</div>
+<div><br/></div>
+<div>It is clear that the application is using clear-text at this point and that HTTP traffic can be trapped and modified.  This is often the first step to attacking any mobile application and if you've made it this far, you now are able to fully act as a man in the middle against any iPhone application.</div>
+<div><br/></div>
+<div>In the following screenshot, we can see that EMM sends user credentials upon first entry to the application in clear-text.  The username and password is clearly shown.</div>
+<div><br/></div>
+<div><img src="Lab%201%20-%20Basic%20Encryption.resources/66718bc9c37cb219b8d94e7139d54354.jpeg" height="632" width="900"/><br/></div>
+</div>
+<div><br/></div>
+<div>In most cases on the iPhone device itself, you'll want to browse the local file system on a Jailbroken device to access the application files.  This will usually be stored within the Base.app folder on the device.</div>
+<div><br/></div>
+<div><img src="Lab%201%20-%20Basic%20Encryption.resources/4f26398c27a5b844a01fb85656671c80.jpeg" height="305" width="659"/><br/></div>
+<div><br/></div>
+<div>Within the simulator, it is a bit easier to access these files without jail breaking the device since the simulator stores any local files in the following directory where &lt;GUID> is unique to everybody.  In the GUID directory, you should find the Base.app folder which is where the contents of the app files will be stored.</div>
+<div><br/></div>
+<div><img src="Lab%201%20-%20Basic%20Encryption.resources/6d1d64abfa5a1147150ebf39f7635a42.jpeg" height="329" width="554"/><br/></div>
+<div><br/></div>
+<div>~/Library/Application Support/iPhone Simulator/&lt;GUID>/Applications/Base.app</div>
+<div><br/></div>
+<div>If you're in OSX Finder, you'll have to right click > Show Package contents to see within the Base.app folder, or just use Terminal to access.  You can see above all the iPhone files used by the installed ExploitMe Mobile application.  </div>
+<div><br/></div>
+<div>You can inspect and modify these files as you would normally on an iPhone device that is jailbroken.</div>
+<div><br/></div>
+</body></html>
