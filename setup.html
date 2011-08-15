@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+	<head>
+		<title>Lab 1 </title>
+		<LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+	</head>
+	<body>
+	
+<div id="container">
+<div id="header">
+		<h1>
+iPhone Labs
+		</h1>
+	</div>
+	<div id="navigation">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="xcode.html">Setup</a></li>
+			<li><a href="lab1.html">Lab1</a></li>
+			<li><a href="lab2.html">Lab2</a></li>
+			<li><a href="lab3.html">Lab3</a></li>
+			<li><a href="lab4.html">Lab4</a></li>
+			<li><a href="lab5.html">Lab5</a></li>
+			<li><a href="lab6.html">Lab6</a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+		<h2>
+		ExploitMe Mobile Setup guide
+		</h2>
+		<p>
+		We recommend using Xcode 4.1 for the iPhone build of ExploitMe Mobile.  Xcode is free for anybody that has purchased OSX and you'll find it on the OSX CD.  Otherwise, you can also get it from the Apple App store.
+		</p><p>
+		The nice thing about Xcode is that the latest version 4.1 has support for git repositories making deployment of the application a point and click affair...awesome!
+		</p><p>
+		When Xcode launches, choose "remote repository" and enter the read-only GIT URL you see on the main iPhoneLabs git page.
+		</p><p>		
+		It should be:
+		git@github.com:SecurityCompass/iPhoneLabs.git
+		</p><p>
+		Xcode will automatically ask you where you wish to locally clone (store on your hard disk) the repository and then the environment should be setup for you immediately.  By default, Xcode will load the "master" branch, but you'll have to use command line git to refresh the branch if you wish to switch to one of the other LabSolutions.
+		</p><p>
+		To do this, open the "Organizer" and goto "Repositories"
+		</p><p>
+		<img style="border-width: 0px;" src="./img/repositories.jpeg" width="600" height="532" />
+		</p><p>
+		Click on the remote, and click "Track Branch".  This will clone the branches into your local repository as well, making it easy to switch between branches.  You'll want to switch branches to see the lab solutions.
+		</p><p>
+		Again, the "Base" branch contains the vulnerable ExploitMe Mobile application and the branches contain the solution to the vulnerability.  This way you can learn the right way to fix and speak to devs about these issues!
+		</p><p>
+		Next, click on your iPhoneLabs repository (in my case) in your case, it will be whatever you named your repo. 
+		</p><p>
+		At the bottom of the screen you'll see "switch branches".  If you ever wish to view the solutions, this is how you'll be able to switch between the Git branches.
+		</p><p>
+		<img style="border-width: 0px;" src="img/branches.jpeg" width="600" height="532" />
+		</p><p>
+		At this point, you can work with the main ExploitMe Mobile labs on iPhone now.  Let's go to the main Xcode interface.  If the project was cloned from Git, you should have no issues running the project now.
+		</p><p>
+		NOTE: Make sure that LabServer is running!  This is the server component to our ExploitMe Mobile Android and iPhone apps and must be running in the background.  It acts as the "Bank" so make sure you have it running first.
+		</p><p>
+		<img style="border-width: 0px;" src="img/labserver.jpeg" width="500" height="102" />
+		</p><p>
+		When you're ready to go, hit the "Run" button on the iPhone simulator and you should see the application load up.
+		</p><p>
+		<img style="border-width: 0px;" src="img/Runsimulator.jpeg" width="600" height="351" />
+		</p><p>
+		The simulator should appear allowing you to start using the application.  On first run, ExploitMe Mobile will ask for a banking user credential.  By default, the labs are set up to have the users:
+		</p><p>
+		jdoe / password<br/>
+		bsmith / password
+		</p><p>
+		After logging in with this user, you'll be asked to setup a local password such that you don't have to re-enter the credentials each and every time.  This is common with some banking applications and think of it as a screen lock of sorts.
+		</p><p>
+		<img style="border-width: 0px;" src="img/localpassword.jpeg" width="400" height="518" />
+		</p><p>
+		That's it!  You should be ready to go.  Now's probably a good time to start walking through the Lab tutorial guides.
+		</p><p>
+		Enjoy and please contribute or comment on the project if you can!
+		</p>
+		
+		</div>
+	</div>
+	</body>
+</html>
