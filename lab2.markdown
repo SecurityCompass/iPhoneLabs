@@ -62,14 +62,12 @@ done in the ParameterManipulationSolution branch of the server source,
 available
 [here](https://github.com/SecurityCompass/LabServer/tree/ParameterManipulationSolution).
 
-The validation is performed in `app.py`
+{% highlight ruby %}
+#validate that accounts belong to user:
+if to_account.user != session.user or from_account.user != session.user:
+    return error("E6")
 
-{% highlight python %}
-    #validate that accounts belong to user:
-        if to_account.user != session.user or from_account.user != session.user:
-            return error("E6")
-
-    #validate that amount is positive
-    if total_cents < 0:
-        return error("E5")
+#validate that amount is positive
+if total_cents < 0:
+    return error("E5")
 {% endhighlight %}
