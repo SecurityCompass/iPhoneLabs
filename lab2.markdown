@@ -5,7 +5,7 @@ title: Lab 2 - Parameter manipulation
 
 ## {{ page.title }}
 
-# Lab 
+### Lab 
 
 The parameter manipulation lab is contained within the bank transfer section.
 
@@ -54,7 +54,7 @@ We can now modify the "from_account" field to see if we can transfer from anothe
 
 Notice that the from account is now from another user.
 
-# Solution
+## Solution
 
 The solution here is the same as it would be in a regular web app, we
 have to perform some validation on the server.  You can see how it is
@@ -62,7 +62,7 @@ done in the ParameterManipulationSolution branch of the server source,
 available
 [here](https://github.com/SecurityCompass/LabServer/tree/ParameterManipulationSolution).
 
-{% highlight ruby %}
+{% highlight python %}
 #validate that accounts belong to user:
 if to_account.user != session.user or from_account.user != session.user:
     return error("E6")
