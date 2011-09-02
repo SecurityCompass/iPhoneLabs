@@ -1,3 +1,8 @@
+---
+layout: default
+title: Setup
+---
+
 ## Setup
 
 We recommend using Xcode 4.1 for the iPhone build of ExploitMe Mobile.
@@ -98,6 +103,5 @@ ExploitMe Mobile application.
 
 You can inspect and modify these files as you would normally on an
 iPhone device that is jailbroken.
-
 
 Enjoy and please contribute or comment on the project if you can!
