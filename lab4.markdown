@@ -3,8 +3,6 @@ layout: default
 title: Lab 4 - Basic Encryption
 ---
 
-## {{ page.title }}
-
 ### Lab
 
 In this lab we will extract some sensitive information from the

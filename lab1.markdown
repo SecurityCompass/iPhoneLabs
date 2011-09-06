@@ -3,8 +3,6 @@ layout: default
 title: Lab 1 - Secure Connection
 ---
 
-## {{ page.title }}
-
 ### Lab
 		
 The first lab, we'll use a proxy server such as Charles to proxy the

@@ -3,8 +3,6 @@ layout: default
 title: Lab 2 - Parameter manipulation
 ---
 
-## {{ page.title }}
-
 ### Lab 
 
 The parameter manipulation lab is contained within the bank transfer section.

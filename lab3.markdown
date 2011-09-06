@@ -3,8 +3,6 @@ layout: default
 title: Lab 3 - Secure Logging
 ---
 
-## {{ page.title }}
-
 ### Lab
 
 Sometimes developers are overzealous about logging. We will access the

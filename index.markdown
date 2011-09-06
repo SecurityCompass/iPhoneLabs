@@ -1,6 +1,6 @@
 ---
 layout: default
-title: iPhone Labs
+title: Explout Me Mobile (iPhone)
 ---
 
 Welcome!
