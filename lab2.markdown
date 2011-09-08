@@ -50,7 +50,10 @@ We can now modify the "from_account" field to see if we can transfer from anothe
 
 ![Modifying transfer](img/2_trap.jpeg)
 
-Notice that the from account is now from another user.
+Notice that the from account is now from another user.  If you go back
+to the account screen, you will see that you successfully transfered
+money without losing any.  If you reset the application and login as
+the other user, you will see they lost money.
 
 ## Solution
 
