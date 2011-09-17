@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title> Lab 4 - Basic Encryption </title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/syntax.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <h1>
+      ExploitMe Mobile iPhone Labs
+    </h1>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="setup.html">Setup</a></li>
+      <li><a href="lab1.html">Lab 1</a></li>
+      <li><a href="lab2.html">Lab 2</a></li>
+      <li><a href="lab3.html">Lab 3</a></li>
+      <li><a href="lab4.html">Lab 4</a><li>
+    </ul>
+  </div>
+  <div id="content">
+   <h2>Lab 4 - Basic Encryption</h2>
+   <h3 id='lab'>Lab</h3>
+
+<p>In this lab we will extract some sensitive information from the filesystem of the device. In this case the information we need will not be encrypted, and we simply need to find it.</p>
+
+<p>As mentioned previously, if you are using the simulator, you can find files stored by the application in <code>~/Library/Application
+Support/iPhone Simulator/&lt;GUID&gt;/Applications/Base.app</code>. If you are using a device, you will need to ssh into the device all look in <code>/private/var/mobile/Applications/&lt;GUID&gt;</code></p>
+
+<p>iOS stores properties in <code>plist</code> files. We open up the <code>ca.arentz.Base.plist</code> file in the <code>/Documents/</code> directory under the applications directory. <img src='img/4_plist_file.png' alt='Plist file' /></p>
+
+<p>As you can see, the username and password is stored in cleartext here. We can use this in order to log into jdoe&#8217;s account. You will also see some binary data under the LocalPassword and LocalPasswordSalt properties. This is a hash and a salt used to check the local password in the application that we had to set ourselves. As you can see, the local password is hashed, but since we can get the <code>jdoe / password</code> used for the backend, we don&#8217;t need to do anything to break the hash.</p>
+
+<h3 id='solution'>Solution</h3>
+
+<p>We need some way to encrypt the <code>jdoe / password</code> username and password and store it on the device. The app should be able to extract the username/password combination when it needs to access the server, but an attacker in our situation should not be able to extract them.</p>
+
+<p>You may be asking youself &#8220;why not just use a session token here?&#8221; We do! We store a session token in memory for a short period of time while the app is active (more about this token later). But even if we do use a session token, if an attacker can access it the same way they can access the username/password, we would face the same problem. An attacker can find the session token and log into your account.</p>
+
+<p>We solve this by encrypting the username and password. The obvious question here is &#8220;where do we store the key?&#8221; For now, we will hardcode a key into the application. This is bad! In a later lab, we will show you how to break this, but for now, here is how our (broken) encryption looks like:</p>
+
+<p>Liquid error: fork() function is unimplemented on this machine</p>
+  <div id="footer">
+    Copyright &copy; 2011 Security Compass
+  </div>
+</div>
+</body>
+</html>

@@ -15,14 +15,15 @@ Launch the lab server:
     python app.py
 
 And launch the application in the simulator
+
 ![Start the application in the simulator](img/localpassword.jpeg)
-				
+
 In the first lab, we'll be inspecting iPhone network traffic to see how the app is sending bank traffic to LabServer.
-				
+
 Launch your favourite proxy and ensure that MacOSX is set up to use
 the proxy server.  The iPhone simulator obey's the OSX settings for a
 proxy.  You can configure it in `Preferences -> Network & Sharing -> Proxies`.
-				
+
 Ensure that your proxy is correctly accepting network traffic and then
 run the iPhone ExploitMe Mobile lab in the simulator.  Once the
 simulator is running, login using the standard login and password
@@ -40,6 +41,7 @@ You can achieve the same effect by using wireshark.  Since both the
 simulator and the server are running on the same server, we need to
 monitor the loopback interface (lo0) to view communication between
 your computer and itself.
+
 ![Using wireshark](img/1_wireshark.png)
 
 ### Solution

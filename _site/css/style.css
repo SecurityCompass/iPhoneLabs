@@ -74,10 +74,12 @@
 {
 	background:#353432;
 	color:#fff;
-	font-size: small;
 	text-align: right;
 	padding: 20px;
 	height: 1%;
 }
 
-
+img
+{
+    width: 560px;
+}

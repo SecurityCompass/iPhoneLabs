@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title> Lab 1 - Secure Connection </title>
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/syntax.css" type="text/css" />
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <h1>
+      ExploitMe Mobile iPhone Labs
+    </h1>
+  </div>
+  <div id="navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="setup.html">Setup</a></li>
+      <li><a href="lab1.html">Lab 1</a></li>
+      <li><a href="lab2.html">Lab 2</a></li>
+      <li><a href="lab3.html">Lab 3</a></li>
+      <li><a href="lab4.html">Lab 4</a><li>
+    </ul>
+  </div>
+  <div id="content">
+   <h2>Lab 1 - Secure Connection</h2>
+   <h3 id='lab'>Lab</h3>
+
+<p>The first lab, we&#8217;ll use a proxy server such as Charles to proxy the ExploitMe mobile request. This guide assumes that you have configured your Xcode environment with ExploitMe Mobile for iPhone. If not, please ensure you read the <a href='setup.html'>setup</a> guide first.</p>
+
+<p>Launch the lab server:</p>
+
+<pre><code>python app.py</code></pre>
+
+<p>And launch the application in the simulator <img src='img/localpassword.jpeg' alt='Start the application in the simulator' /></p>
+
+<p>In the first lab, we&#8217;ll be inspecting iPhone network traffic to see how the app is sending bank traffic to LabServer.</p>
+
+<p>Launch your favourite proxy and ensure that MacOSX is set up to use the proxy server. The iPhone simulator obey&#8217;s the OSX settings for a proxy. You can configure it in <code>Preferences -&gt; Network &amp; Sharing -&gt; Proxies</code>.</p>
+
+<p>Ensure that your proxy is correctly accepting network traffic and then run the iPhone ExploitMe Mobile lab in the simulator. Once the simulator is running, login using the standard login and password jdoe/password for the user, or if you&#8217;ve already logged in before, enter your local password you configured on first run.</p>
+
+<p>Below you can see our network traffic from the iPhone EMM app to our lab server.</p>
+
+<p>It is clear that the application is using clear-text at this point and that HTTP traffic can be trapped and modified.This is often the first step to attacking any mobile application and if you&#8217;ve made it this far, you now are able to fully act as a man in the middle against any iPhone application.</p>
+
+<p>In the following screenshot, we can see that EMM sends user credentials upon first entry to the application in clear-text.The username and password is clearly shown. <img src='img/1_proxy.jpeg' alt='Proxying the application' /></p>
+
+<p>You can achieve the same effect by using wireshark. Since both the simulator and the server are running on the same server, we need to monitor the loopback interface (lo0) to view communication between your computer and itself. <img src='img/1_wireshark.png' alt='Using wireshark' /></p>
+
+<h3 id='solution'>Solution</h3>
+
+<p>We want to encrypt the communication between the client and server so that we can&#8217;t so easily man-in-the-middle it. Since we are using HTTP for communication, all we have to do is change the protocol to HTTPS and thus enable SSL/TLS.</p>
+
+<p>We relaunch the server in ssl mode and run it on port 8443:</p>
+
+<pre><code>python app.pyt --ssl --port 8443</code></pre>
+
+<p>In the iPhone simulator, under <code>Settings -&gt; Base</code> we change the URL to <code>http://localhost:8443</code>: <img src='img/1_enable_ssl.png' alt='Enable ssl' /></p>
+
+<p>Now, we can see in Wireshark that the communication is encrypted: <img src='img/1_wireshark_ssl.png' alt='Wireshark with ssl enabled' /></p>
+
+<p>We can still use Charles (or another proxy) to intercept SSL traffic as long as we accept the Charles SSL certificate in the iOS simulator. More information on how to do that <a href='http://www.charlesproxy.com/documentation/faqs/ssl-connections-from-within-iphone-applications/'>here</a>.</p>
+
+<p>When using a proxy that intercepts SSL, we can see the decrypted traffic: <img src='img/1_charles_ssl.png' alt='Charles with ssl' /></p>
+
+<p>Above, Charles can decrypt the SSL-encrypted traffic for us since we accepted the Charles certificate as valid in the simulator.</p>
+  <div id="footer">
+    Copyright &copy; 2011 Security Compass
+  </div>
+</div>
+</body>
+</html>
